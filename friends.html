@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends - Game of Life</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="friends.css">
+</head>
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <h1 class="brand">👥 Friends</h1>
+            <a href="index.html" class="nav-link">Go to Diary</a>
+            <a href="planner.html" class="nav-link">Go to Planner 🗓️</a>
+            <a href="analytics.html" class="nav-link">Analytics 📊</a>
+            <a href="achievements.html" class="nav-link">Achievements 🏆</a>
+            
+            <div class="user-stats">
+                <div class="level">Level: 1</div>
+                <div class="xp-bar">
+                    <label for="xp-progress">XP: 0 / 100</label>
+                    <progress id="xp-progress" value="0" max="100"></progress>
+                </div>
+                <div class="badge-container"></div>
+            </div>
+            
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Friend Stats -->
+            <section class="friend-stats">
+                <div class="stat-card">
+                    <h3>Total Friends</h3>
+                    <div class="stat-value" id="total-friends">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Requests</h3>
+                    <div class="stat-value" id="pending-requests">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Your Rank</h3>
+                    <div class="stat-value" id="your-rank">#1</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Top Friend</h3>
+                    <div class="stat-value" id="top-friend">None</div>
+                </div>
+            </section>
+
+            <!-- Navigation Tabs -->
+            <section class="friend-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="friends">My Friends</button>
+                    <button class="tab-btn" data-tab="requests">Friend Requests</button>
+                    <button class="tab-btn" data-tab="search">Add Friends</button>
+                    <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
+                </div>
+            </section>
+
+            <!-- Friends List Tab -->
+            <section id="friends-tab" class="tab-content active">
+                <div class="friends-grid" id="friends-container">
+                    <!-- Friends will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Friend Requests Tab -->
+            <section id="requests-tab" class="tab-content">
+                <div class="requests-container" id="requests-container">
+                    <!-- Requests will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Add Friends Tab -->
+            <section id="search-tab" class="tab-content">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by username or email...">
+                        <button id="search-btn">Search</button>
+                    </div>
+                    <div class="search-results" id="search-results">
+                        <!-- Search results will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Tab -->
+            <section id="leaderboard-tab" class="tab-content">
+                <div class="leaderboard-container">
+                    <h2>Friends Leaderboard</h2>
+                    <div class="leaderboard-list" id="leaderboard-container">
+                        <!-- Leaderboard will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Friend Profile Modal -->
+    <div id="friend-modal" class="friend-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-friend-name">Friend Name</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="friend-profile-stats">
+                    <div class="profile-stat">
+                        <span class="stat-label">Level:</span>
+                        <span class="stat-value" id="modal-level">1</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="stat-label">XP:</span>
+                        <span class="stat-value" id="modal-xp">0</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="stat-label">Streak:</span>
+                        <span class="stat-value" id="modal-streak">0</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="stat-label">Achievements:</span>
+                        <span class="stat-value" id="modal-achievements">0</span>
+                    </div>
+                </div>
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <div class="activities-list" id="modal-activities">
+                        <!-- Recent activities will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="modules/mobileNav.js"></script>
+    <script type="module" src="friends.js"></script>
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations } from './modules/mobileOptimizations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileNavigation();
+            initializeMobileOptimizations();
+        });
+    </script>
+</body>
+</html> 

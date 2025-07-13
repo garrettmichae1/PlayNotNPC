@@ -1,0 +1,116 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PlayNotNPC</title>
+<link rel="stylesheet" href="login.css" />
+<style>
+/* Mobile fallback styles in case CSS doesn't load */
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 100%;
+    border: 3px solid #8e2de2;
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    font-size: 24px;
+    color: #8e2de2;
+    margin-bottom: 20px;
+  }
+  
+  input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #8e2de2;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .button-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  
+  .primary-btn {
+    background: #8e2de2;
+    color: white;
+  }
+  
+  .secondary-btn {
+    background: transparent;
+    border: 2px solid #8e2de2;
+    color: white;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1>🔐 Login to <span class="highlight">PlayNotNPC</span></h1>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+
+      <div class="button-row">
+        <button type="button" id="loginBtn" class="primary-btn">Login</button>
+        <button type="button" id="registerBtn" class="secondary-btn">Register</button>
+      </div>
+
+      <p id="message" class="message"></p>
+    </form>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>

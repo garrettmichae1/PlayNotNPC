@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Game of Life</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="achievements.css">
+</head>
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <h1 class="brand">🏆 Achievements</h1>
+            <a href="index.html" class="nav-link">Go to Diary</a>
+            <a href="planner.html" class="nav-link">Go to Planner 🗓️</a>
+            <a href="analytics.html" class="nav-link">Analytics 📊</a>
+            <a href="friends.html" class="nav-link">Friends 👥</a>
+            
+            <div class="user-stats">
+                <div class="level">Level: 1</div>
+                <div class="xp-bar">
+                    <label for="xp-progress">XP: 0 / 100</label>
+                    <progress id="xp-progress" value="0" max="100"></progress>
+                </div>
+                <div class="badge-container"></div>
+            </div>
+            
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Achievement Stats -->
+            <section class="achievement-stats">
+                <div class="stat-card">
+                    <h3>Total Achievements</h3>
+                    <div class="stat-value" id="total-achievements">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Unlocked</h3>
+                    <div class="stat-value" id="unlocked-achievements">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Completion</h3>
+                    <div class="stat-value" id="completion-percentage">0%</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total XP Earned</h3>
+                    <div class="stat-value" id="achievement-xp">0</div>
+                </div>
+            </section>
+
+            <!-- Achievement Categories -->
+            <section class="achievement-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All Achievements</button>
+                    <button class="tab-btn" data-category="Milestones">Milestones</button>
+                    <button class="tab-btn" data-category="Streaks">Streaks</button>
+                    <button class="tab-btn" data-category="Activities">Activities</button>
+                    <button class="tab-btn" data-category="Time-based">Time-based</button>
+                    <button class="tab-btn" data-category="Special">Special</button>
+                </div>
+            </section>
+
+            <!-- Achievements Grid -->
+            <section class="achievements-grid" id="achievements-container">
+                <!-- Achievements will be populated by JavaScript -->
+            </section>
+
+            <!-- Achievement Unlock Modal -->
+            <div id="achievement-modal" class="achievement-modal">
+                <div class="modal-content">
+                    <div class="achievement-unlock">
+                        <div class="unlock-icon">🎉</div>
+                        <h2>Achievement Unlocked!</h2>
+                        <div class="achievement-details">
+                            <div class="achievement-icon" id="modal-icon">🏆</div>
+                            <div class="achievement-info">
+                                <h3 id="modal-title">Achievement Title</h3>
+                                <p id="modal-description">Achievement description</p>
+                                <div class="xp-reward">+<span id="modal-xp">0</span> XP</div>
+                            </div>
+                        </div>
+                        <button class="close-modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="modules/achievements.js"></script>
+    <script type="module" src="modules/mobileNav.js"></script>
+    <script type="module" src="achievements.js"></script>
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations } from './modules/mobileOptimizations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileNavigation();
+            initializeMobileOptimizations();
+        });
+    </script>
+</body>
+</html> 

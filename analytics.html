@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Game of Life</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="analytics.css">
+    <script src="chart.js"></script>
+</head>
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <h1 class="brand">📊 Analytics</h1>
+            <a href="index.html" class="nav-link">Go to Diary</a>
+            <a href="planner.html" class="nav-link">Go to Planner 🗓️</a>
+            <a href="achievements.html" class="nav-link">Achievements 🏆</a>
+            <a href="friends.html" class="nav-link">Friends 👥</a>
+            
+            <div class="user-stats">
+                <div class="level">Level: 1</div>
+                <div class="xp-bar">
+                    <label for="xp-progress">XP: 0 / 100</label>
+                    <progress id="xp-progress" value="0" max="100"></progress>
+                </div>
+                <div class="badge-container"></div>
+            </div>
+            
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Time Range Selector -->
+            <section class="card time-range-selector">
+                <h2>Time Range</h2>
+                <div class="range-buttons">
+                    <button class="range-btn active" data-range="7">Last 7 Days</button>
+                    <button class="range-btn" data-range="30">Last 30 Days</button>
+                    <button class="range-btn" data-range="90">Last 90 Days</button>
+                    <button class="range-btn" data-range="all">All Time</button>
+                </div>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="card summary-card">
+                    <h3>Total XP Earned</h3>
+                    <div class="summary-value" id="total-xp">0</div>
+                </div>
+                <div class="card summary-card">
+                    <h3>Total Time</h3>
+                    <div class="summary-value" id="total-time">0h 0m</div>
+                </div>
+                <div class="card summary-card">
+                    <h3>Activities Count</h3>
+                    <div class="summary-value" id="total-activities">0</div>
+                </div>
+                <div class="card summary-card">
+                    <h3>Average Daily XP</h3>
+                    <div class="summary-value" id="avg-daily-xp">0</div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <!-- Activity Distribution Chart -->
+                <div class="card chart-container">
+                    <h2>Activity Distribution</h2>
+                    <div class="chart-controls">
+                        <button class="chart-btn active" data-chart="pie">Pie Chart</button>
+                        <button class="chart-btn" data-chart="doughnut">Doughnut</button>
+                        <button class="chart-btn" data-chart="bar">Bar Chart</button>
+                    </div>
+                    <canvas id="activityChart"></canvas>
+                </div>
+
+                <!-- Time Series Chart -->
+                <div class="card chart-container">
+                    <h2>XP Over Time</h2>
+                    <div class="chart-controls">
+                        <button class="chart-btn active" data-chart="line">Line Chart</button>
+                        <button class="chart-btn" data-chart="area">Area Chart</button>
+                    </div>
+                    <canvas id="timeSeriesChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Detailed Breakdown -->
+            <section class="card breakdown-section">
+                <h2>Detailed Breakdown</h2>
+                <div class="breakdown-controls">
+                    <label for="breakdown-type">View Breakdown:</label>
+                    <select id="breakdown-type" aria-label="Select breakdown type">
+                        <option value="category">By Category</option>
+                        <option value="daily">By Day</option>
+                        <option value="weekly">By Week</option>
+                    </select>
+                </div>
+                <div id="breakdown-content" class="breakdown-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="modules/mobileNav.js"></script>
+    <script type="module" src="analytics.js"></script>
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations } from './modules/mobileOptimizations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileNavigation();
+            initializeMobileOptimizations();
+        });
+    </script>
+</body>
+</html> 

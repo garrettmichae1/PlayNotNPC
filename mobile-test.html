@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Mobile Debug - PlayNotNPC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #845ef7;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(132, 94, 247, 0.3);
+        }
+        
+        .test-section h2 {
+            color: #845ef7;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #845ef7 0%, #5c7cfa 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            min-height: 44px;
+            min-width: 44px;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(132, 94, 247, 0.3);
+        }
+        
+        .test-button:active {
+            transform: scale(0.95);
+        }
+        
+        .test-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(132, 94, 247, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .test-input:focus {
+            outline: none;
+            border-color: #845ef7;
+            box-shadow: 0 0 0 2px rgba(132, 94, 247, 0.2);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        .status.success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+        
+        .status.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+        
+        .status.info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+        }
+        
+        .device-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .test-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(132, 94, 247, 0.2);
+        }
+        
+        .debug-log {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .debug-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+        
+        .debug-entry.success { color: #86efac; }
+        .debug-entry.error { color: #fca5a5; }
+        .debug-entry.info { color: #93c5fd; }
+        .debug-entry.warning { color: #fde047; }
+        
+        .mobile-nav-test {
+            position: relative;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .mobile-menu-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(132, 94, 247, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            min-height: 44px;
+            min-width: 44px;
+            z-index: 1001;
+        }
+        
+        .sidebar {
+            position: absolute;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            transition: left 0.3s ease;
+            padding: 20px;
+            z-index: 1000;
+        }
+        
+        .sidebar.mobile-open {
+            left: 0;
+        }
+        
+        .sidebar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .sidebar-overlay.active {
+            display: block;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(132, 94, 247, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .test-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Mobile Debug Center</h1>
+        
+        <div class="test-section">
+            <h2>📊 Device Information</h2>
+            <div class="device-info" id="deviceInfo">
+                Loading device information...
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>👆 Touch Test</h2>
+            <p style="color: #a0a0a0; margin-bottom: 15px;">Tap these buttons to test touch responsiveness:</p>
+            <button class="test-button" onclick="testTouch('Button 1')">Touch Test 1</button>
+            <button class="test-button" onclick="testTouch('Button 2')">Touch Test 2</button>
+            <button class="test-button" onclick="testTouch('Button 3')">Touch Test 3</button>
+            <div id="touchResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📝 Form Input Test</h2>
+            <p style="color: #a0a0a0; margin-bottom: 15px;">These inputs should not zoom on focus (16px font):</p>
+            <input type="text" class="test-input" placeholder="Text input (16px font)" onfocus="testInput('text')">
+            <input type="number" class="test-input" placeholder="Number input (16px font)" onfocus="testInput('number')">
+            <label for="test-select" style="color: #a0a0a0; display: block; margin-bottom: 5px;">Select Input:</label>
+            <select id="test-select" class="test-input" onfocus="testInput('select')">
+                <option>Select option (16px font)</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+            <div id="inputResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🍔 Mobile Navigation Test</h2>
+            <div class="mobile-nav-test">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+                <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                <div class="sidebar" id="sidebar">
+                    <h3 style="color: #845ef7; margin-bottom: 20px;">Mobile Menu</h3>
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Planner</a>
+                    <a href="#" class="nav-link">Analytics</a>
+                    <a href="#" class="nav-link">Achievements</a>
+                    <a href="#" class="nav-link">Friends</a>
+                </div>
+            </div>
+            <div id="navResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🌐 Connection Test</h2>
+            <button class="test-button" onclick="testConnection()">Test API Connection</button>
+            <button class="test-button" onclick="testMobileFunctionality()">Test Mobile Functions</button>
+            <div id="connectionResult"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🎨 Styling Test</h2>
+            <div class="test-item">
+                <h3 style="color: #fff; margin-bottom: 8px;">Card Styling</h3>
+                <p style="color: #a0a0a0;">This should have proper mobile styling with rounded corners and good contrast.</p>
+            </div>
+            <div class="test-item">
+                <h3 style="color: #fff; margin-bottom: 8px;">Progress Bar</h3>
+                <progress value="75" max="100" style="width: 100%; height: 20px;"></progress>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔍 Debug Log</h2>
+            <div class="debug-log" id="debugLog">
+                <div class="debug-entry info">Debug log initialized...</div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔗 Navigation</h2>
+            <a href="/" class="test-button" style="text-decoration: none; display: inline-block;">← Back to Main App</a>
+            <a href="/login" class="test-button" style="text-decoration: none; display: inline-block;">Go to Login</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations, testMobileFunctionality } from './modules/mobileOptimizations.js';
+        
+        // Initialize mobile functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 Mobile debug page loaded');
+            
+            // Initialize mobile navigation
+            initializeMobileNavigation();
+            
+            // Initialize mobile optimizations
+            initializeMobileOptimizations();
+            
+            // Update device info
+            updateDeviceInfo();
+            
+            // Add debug logging
+            setupDebugLogging();
+        });
+        
+        // Device information
+        function updateDeviceInfo() {
+            const deviceInfo = document.getElementById('deviceInfo');
+            const info = {
+                userAgent: navigator.userAgent,
+                screenWidth: window.screen.width,
+                screenHeight: window.screen.height,
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                devicePixelRatio: window.devicePixelRatio,
+                touchSupport: 'ontouchstart' in window,
+                maxTouchPoints: navigator.maxTouchPoints,
+                orientation: window.screen.orientation ? window.screen.orientation.type : 'unknown',
+                platform: navigator.platform,
+                language: navigator.language
+            };
+            
+            deviceInfo.innerHTML = `
+                <strong>Screen:</strong> ${info.screenWidth} × ${info.screenHeight}<br>
+                <strong>Viewport:</strong> ${info.viewportWidth} × ${info.viewportHeight}<br>
+                <strong>Pixel Ratio:</strong> ${info.devicePixelRatio}<br>
+                <strong>Touch Support:</strong> ${info.touchSupport ? 'Yes' : 'No'}<br>
+                <strong>Max Touch Points:</strong> ${info.maxTouchPoints}<br>
+                <strong>Orientation:</strong> ${info.orientation}<br>
+                <strong>Platform:</strong> ${info.platform}<br>
+                <strong>Language:</strong> ${info.language}<br>
+                <strong>User Agent:</strong> ${info.userAgent.substring(0, 100)}...
+            `;
+        }
+        
+        // Touch test
+        function testTouch(buttonName) {
+            const result = document.getElementById('touchResult');
+            result.innerHTML = `<div class="status success">✅ ${buttonName} tapped successfully!</div>`;
+            logDebug(`Touch test: ${buttonName} tapped`, 'success');
+            setTimeout(() => result.innerHTML = '', 2000);
+        }
+        
+        // Input test
+        function testInput(inputType) {
+            const result = document.getElementById('inputResult');
+            result.innerHTML = `<div class="status success">✅ ${inputType} input focused (should not zoom)</div>`;
+            logDebug(`Input test: ${inputType} input focused`, 'success');
+            setTimeout(() => result.innerHTML = '', 2000);
+        }
+        
+        // Connection test
+        async function testConnection() {
+            const result = document.getElementById('connectionResult');
+            result.innerHTML = '<div class="status info">🔄 Testing connection...</div>';
+            logDebug('Testing API connection...', 'info');
+            
+            try {
+                const response = await fetch('/mobile-test');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<div class="status success">✅ Connection successful! Server: ${data.message}</div>`;
+                    logDebug('API connection successful', 'success');
+                } else {
+                    result.innerHTML = `<div class="status error">❌ Connection failed: ${response.status}</div>`;
+                    logDebug(`API connection failed: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                result.innerHTML = `<div class="status error">❌ Connection error: ${error.message}</div>`;
+                logDebug(`API connection error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Mobile functionality test
+        async function testMobileFunctionality() {
+            const result = document.getElementById('connectionResult');
+            result.innerHTML = '<div class="status info">🔄 Testing mobile functionality...</div>';
+            logDebug('Testing mobile functionality...', 'info');
+            
+            try {
+                const tests = testMobileFunctionality();
+                result.innerHTML = `<div class="status success">✅ Mobile tests completed! Check console for details.</div>`;
+                logDebug('Mobile functionality tests completed', 'success');
+                console.log('🧪 Mobile test results:', tests);
+            } catch (error) {
+                result.innerHTML = `<div class="status error">❌ Mobile test error: ${error.message}</div>`;
+                logDebug(`Mobile test error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Debug logging
+        function setupDebugLogging() {
+            // Override console methods to capture logs
+            const originalLog = console.log;
+            const originalWarn = console.warn;
+            const originalError = console.error;
+            
+            console.log = function(...args) {
+                originalLog.apply(console, args);
+                logDebug(args.join(' '), 'info');
+            };
+            
+            console.warn = function(...args) {
+                originalWarn.apply(console, args);
+                logDebug(args.join(' '), 'warning');
+            };
+            
+            console.error = function(...args) {
+                originalError.apply(console, args);
+                logDebug(args.join(' '), 'error');
+            };
+        }
+        
+        function logDebug(message, type = 'info') {
+            const debugLog = document.getElementById('debugLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = `debug-entry ${type}`;
+            entry.textContent = `[${timestamp}] ${message}`;
+            
+            debugLog.appendChild(entry);
+            debugLog.scrollTop = debugLog.scrollHeight;
+            
+            // Keep only last 50 entries
+            while (debugLog.children.length > 50) {
+                debugLog.removeChild(debugLog.firstChild);
+            }
+        }
+        
+        // Mobile navigation test
+        function testMobileNav() {
+            const result = document.getElementById('navResult');
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                result.innerHTML = `<div class="status success">✅ Mobile navigation should work with hamburger menu</div>`;
+                logDebug('Mobile navigation test: Mobile mode detected', 'success');
+            } else {
+                result.innerHTML = `<div class="status info">ℹ️ Desktop mode - mobile navigation hidden</div>`;
+                logDebug('Mobile navigation test: Desktop mode detected', 'info');
+            }
+        }
+        
+        // Initialize
+        window.addEventListener('resize', updateDeviceInfo);
+        window.addEventListener('orientationchange', updateDeviceInfo);
+        
+        // Make functions globally available
+        window.testTouch = testTouch;
+        window.testInput = testInput;
+        window.testConnection = testConnection;
+        window.testMobileFunctionality = testMobileFunctionality;
+        window.testMobileNav = testMobileNav;
+    </script>
+</body>
+</html> 

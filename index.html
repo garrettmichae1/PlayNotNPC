@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayNotNPC - Transform Your Life</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+    /* Mobile fallback styles in case CSS doesn't load */
+    @media (max-width: 768px) {
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+      }
+      
+      .app-container {
+        display: flex;
+        min-height: 100vh;
+      }
+      
+      .sidebar {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 20px;
+        width: 250px;
+        border-right: 2px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      .entry-item {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      input, select, button {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 12px;
+        color: white;
+        font-size: 16px;
+      }
+      
+      button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .brand {
+        color: #8e2de2;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .user-stats {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      
+      .level {
+        color: #4ade80;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      
+      .xp-bar label {
+        color: white;
+        font-size: 14px;
+      }
+      
+      progress {
+        width: 100%;
+        height: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      progress::-webkit-progress-bar {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
+      
+      progress::-webkit-progress-value {
+        background: linear-gradient(45deg, #4ade80, #22c55e);
+        border-radius: 10px;
+      }
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+
+        <nav class="sidebar" id="sidebar">
+            <h1 class="brand">🎮 PlayNotNPC</h1>
+
+            <a href="planner.html" class="nav-link">Go to Planner 🗓️</a>
+            <a href="analytics.html" class="nav-link">Analytics 📊</a>
+            <a href="achievements.html" class="nav-link">Achievements 🏆</a>
+            <a href="friends.html" class="nav-link">Friends 👥</a>
+
+            <div class="user-stats">
+                <div class="level">Level: 1</div>
+                <div class="xp-bar">
+                    <label for="xp-progress">XP: 0 / 100</label>
+                    <progress id="xp-progress" value="0" max="100"></progress>
+                </div>
+                <div class="badge-container"></div>
+            </div>
+
+            <!-- Updated logout button with proper auth handler -->
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+
+        </nav>
+
+        <main class="main-content">
+
+            <section class="card entry-form-container">
+                <h2>Add Activity</h2>
+                <form id="diary-form">
+                    <div class="form-group">
+                        <label for="entry-type">Activity</label>
+                        <select id="entry-type" name="entry-type">
+                            <option value="WORKOUT">Workout</option>
+                            <option value="WORK">Work</option>
+                            <option value="STUDY">Study</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-description">Description</label>
+                        <input type="text" id="entry-description"
+                            placeholder="e.g., Ran 6 miles, Finished React project">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-value">Value (Minutes or XP)</label>
+                        <input type="number" id="entry-value" placeholder="e.g., 120">
+                    </div>
+                    <button type="submit" class="add-entry-btn">Add Activity</button>
+                </form>
+            </section>
+
+
+
+            <!-- Character Development Guide -->
+            <section class="card game-objective">
+                <h2>🎯 Character Development</h2>
+                <div class="objective-content">
+                    <div class="objective-item">
+                        <h3>🎮 From NPC to Player</h3>
+                        <p>Transform your daily activities into character progression. Track workouts, work, and study to earn XP and evolve from background character to main protagonist!</p>
+                    </div>
+                    <div class="objective-item">
+                        <h3>🔥 Build Momentum</h3>
+                        <p>Maintain daily activity streaks to unlock special abilities and bonus rewards. Consistency transforms you from NPC to playable character!</p>
+                    </div>
+                    <div class="objective-item">
+                        <h3>🏅 Unlock Achievements</h3>
+                        <p>Complete quests, reach milestones, and discover hidden achievements. Each achievement brings you closer to becoming the ultimate player!</p>
+                    </div>
+                    <div class="objective-item">
+                        <h3>📊 Character Stats</h3>
+                        <p>Use Analytics to visualize your character progression and identify growth patterns. The Planner helps you set quests and stay organized.</p>
+                    </div>
+                </div>
+                <div class="objective-actions">
+                    <a href="achievements.html" class="btn-primary">View Achievements 🏆</a>
+                    <a href="analytics.html" class="btn-secondary">View Analytics 📊</a>
+                </div>
+            </section>
+
+            <section class="entry-list-container">
+                <h2>Recent Activities</h2>
+                <ul class="entry-list">
+                </ul>
+            </section>
+
+            <!-- Debug Info Section -->
+            <section class="debug-info" style="margin-top: 20px; padding: 15px; background: #e8f4fd; border: 2px solid #007bff; border-radius: 8px;">
+                <h3 style="color: #007bff; margin-top: 0;">🔍 Debug Information</h3>
+                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                    <strong>To see console logs:</strong> Press F12 → Console tab
+                </p>
+                <div id="debug-info">
+                    <p>Loading debug info...</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

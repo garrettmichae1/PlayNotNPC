@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Planner - PlayNotNPC</title>
+    <link rel="stylesheet" href="styles.css"> <link rel="stylesheet" href="planner.css"> </head>
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+             <h1 class="brand">🗓️ Planner Mode</h1>
+             <a href="index.html" class="nav-link">Go to Diary</a>
+            <a href="analytics.html" class="nav-link">Analytics 📊</a>
+            <a href="achievements.html" class="nav-link">Achievements 🏆</a>
+            <a href="friends.html" class="nav-link">Friends 👥</a>
+             <div id="user-info">
+                </div>
+             <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <section class="card planner-container">
+                <div class="calendar-header">
+                    <button id="prev-month-btn">◀</button>
+                    <h2 id="month-year-header">July 2025</h2>
+                    <button id="next-month-btn">▶</button>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    </div>
+            </section>
+
+            <section class="card day-details-container">
+                <h2 id="selected-day-header">Select a day to see plans</h2>
+                <ul id="planned-list" class="planned-list">
+                    </ul>
+
+                <hr class="divider">
+
+                <div id="prediction-section">
+                     <h3>Predicted XP for this day: <span id="predicted-xp">0</span></h3>
+                </div>
+
+                <form id="plan-form" class="plan-form">
+                    <h4>Add a New Plan</h4>
+                    <div class="form-group">
+                        <label for="plan-type">Category</label>
+                        <select id="plan-type">
+                            <option value="WORKOUT">Workout</option>
+                            <option value="STUDY">Study</option>
+                            <option value="INCOME">Income</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label for="plan-title">Description</label>
+                        <input type="text" id="plan-title" placeholder="e.g., Morning run">
+                    </div>
+                     <div class="form-group">
+                        <label for="plan-amount">XP Value</label>
+                        <input type="number" id="plan-amount" placeholder="e.g., 50">
+                    </div>
+                    <button type="submit">Add Plan</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="./modules/auth.js"></script>
+    <script type="module" src="./modules/storage.js"></script>
+    <script type="module" src="./modules/mobileNav.js"></script>
+    <script type="module" src="planner.js"></script>
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations } from './modules/mobileOptimizations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileNavigation();
+            initializeMobileOptimizations();
+        });
+    </script>
+</body>
+</html>

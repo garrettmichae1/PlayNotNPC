@@ -1,0 +1,139 @@
+/* planner.css */
+
+.planner-container {
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header button {
+    background: #332d4e;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-day:hover {
+    background-color: #332d4e;
+}
+
+.calendar-day.today {
+    background-color: #845ef7;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.selected {
+    outline: 2px solid #5c7cfa;
+}
+
+.calendar-day.has-plan {
+    position: relative;
+}
+
+/* Dot indicator for a planned day */
+.calendar-day.has-plan::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #5c7cfa;
+}
+
+.day-details-container h3, .day-details-container h4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.planned-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.planned-list li {
+    background: #1a162d;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.plan-form {
+    margin-top: 1.5rem;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: #332d4e;
+    margin: 1.5rem 0;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(51, 45, 78, 0.8) 0%, rgba(26, 22, 45, 0.9) 100%);
+    color: #c7b1ff;
+    padding: 1.2rem 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(132, 94, 247, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(132, 94, 247, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-link:hover {
+    transform: translateX(8px) translateY(-2px);
+    background: linear-gradient(135deg, rgba(132, 94, 247, 0.2) 0%, rgba(92, 124, 250, 0.15) 100%);
+    border-color: rgba(132, 94, 247, 0.4);
+    box-shadow: 0 8px 25px rgba(132, 94, 247, 0.2);
+    color: #fff;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:active {
+    transform: translateX(4px) translateY(-1px);
+    transition: transform 0.1s ease;
+}
