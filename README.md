@@ -1,4 +1,4 @@
-# Real Life XP - Gamified Activity Tracker
+# PlayNotNPC - Real Life XP Gamified Activity Tracker
 
 A full-stack web application that gamifies real-life activities with XP, levels, and achievements.
 
@@ -70,6 +70,8 @@ PORT=5000
 - ✅ Statistics dashboard
 - ✅ Streak counting
 - ✅ Achievement badges
+- ✅ Mobile-optimized interface
+- ✅ Comprehensive mobile testing
 
 ### Planned Features
 - 📅 **Calendar view** of activities
@@ -87,11 +89,11 @@ PORT=5000
 - [x] XP/Level system
 - [x] Basic statistics
 
-### Phase 2: Enhanced UX 🚧
-- [ ] Calendar integration
-- [ ] Data visualization
-- [ ] Mobile responsiveness
-- [ ] Dark mode
+### Phase 2: Enhanced UX ✅
+- [x] Mobile responsiveness
+- [x] Touch-friendly interface
+- [x] Mobile navigation
+- [x] Form optimizations
 
 ### Phase 3: Social Features 📈
 - [ ] User profiles
