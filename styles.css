@@ -745,11 +745,15 @@ textarea {
 }
 
 .objective-item h3 {
-    color: #c7b1ff;
+    color: #000;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(132, 94, 247, 0.3);
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .objective-item p {
@@ -1370,8 +1374,13 @@ textarea {
     .objective-item h3 {
         font-size: 18px;
         font-weight: 600;
-        color: #fff;
+        color: #000;
         margin-bottom: 10px;
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(255, 255, 255, 0.4),
+            2px 2px 4px rgba(0, 0, 0, 0.3);
     }
     
     .objective-item p {
