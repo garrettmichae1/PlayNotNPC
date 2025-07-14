@@ -16,7 +16,9 @@ html {
 body {
     font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #e0e0e0;
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a162d 50%, #0f0a1a 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -28,6 +30,19 @@ body {
     touch-action: manipulation;
 }
 
+/* Animated gradient background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 body::before {
     content: '';
     position: fixed;
@@ -36,11 +51,38 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(132, 94, 247, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(92, 124, 250, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(132, 94, 247, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(132, 94, 247, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(92, 124, 250, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(132, 94, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 60% 60%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
+}
+
+/* Floating background elements */
+body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle, rgba(132, 94, 247, 0.1) 2px, transparent 2px);
+    background-size: 60px 60px, 100px 100px;
+    animation: float 30s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-30px, -30px) rotate(360deg);
+    }
 }
 
 .card {
@@ -104,7 +146,24 @@ body::before {
     flex-grow: 1;
     padding: 2.5rem;
     overflow-y: auto;
-    background: linear-gradient(135deg, rgba(10, 10, 15, 0.3) 0%, rgba(26, 22, 45, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(132, 94, 247, 0.05) 50%, rgba(240, 147, 251, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(132, 94, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* ===== Sidebar Styling ===== */
@@ -1024,9 +1083,10 @@ textarea {
         width: 100%;
         height: 100%;
         background: 
-            radial-gradient(circle at 20% 80%, rgba(132, 94, 247, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(92, 124, 250, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(132, 94, 247, 0.05) 0%, transparent 50%);
+            radial-gradient(circle at 20% 80%, rgba(132, 94, 247, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(92, 124, 250, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(132, 94, 247, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 60% 60%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
         pointer-events: none;
         z-index: -1;
     }
