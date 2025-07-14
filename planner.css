@@ -137,3 +137,66 @@
     transform: translateX(4px) translateY(-1px);
     transition: transform 0.1s ease;
 }
+
+/* ===== Modern Tech/Gamified Color Redesign ===== */
+:root {
+    --background-main: #0a0a0a;
+    --background-secondary: #18181b;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --accent-gradient: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
+    --accent-solid: #845ef7;
+    --accent-solid2: #5c7cfa;
+    --accent-neon: #00f2fe;
+    --card-bg: rgba(24,24,27,0.85);
+    --border: rgba(255,255,255,0.08);
+    --shadow: 0 2px 12px rgba(132,94,247,0.2);
+}
+
+body {
+  background: var(--background-main);
+  color: var(--text-primary);
+}
+
+.planner-container, .card, .quest-card, .modal-content {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow);
+}
+
+h1, h2, h3, .brand {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+}
+
+input, select, textarea {
+  background: var(--background-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--accent-solid2) !important;
+  border-radius: 10px;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-neon) !important;
+  box-shadow: 0 0 8px var(--accent-neon);
+}
+
+.btn, .primary-btn, .secondary-btn {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border-radius: 12px;
+  border: none;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn:hover, .primary-btn:hover, .secondary-btn:hover {
+  filter: brightness(1.15) drop-shadow(0 0 8px var(--accent-neon));
+  color: #fff !important;
+}
+
+.form-group label {
+  color: var(--accent-solid);
+}

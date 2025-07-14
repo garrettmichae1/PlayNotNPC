@@ -11,24 +11,24 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Body and Background - Call of Duty Camouflage Style */
+/* ===== Modern Tech/Gamified Color Redesign ===== */
+:root {
+    --background-main: #0a0a0a;
+    --background-secondary: #18181b;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --accent-gradient: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
+    --accent-solid: #845ef7;
+    --accent-solid2: #5c7cfa;
+    --accent-neon: #00f2fe;
+    --card-bg: rgba(24,24,27,0.85);
+    --border: rgba(255,255,255,0.08);
+    --shadow: 0 2px 12px rgba(132,94,247,0.2);
+}
+
 body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: 
-    linear-gradient(45deg, #2d4a3e 25%, transparent 25%),
-    linear-gradient(-45deg, #2d4a3e 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #2d4a3e 75%),
-    linear-gradient(-45deg, transparent 75%, #2d4a3e 75%);
-  background-size: 60px 60px;
-  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
-  background-color: #1a2f28;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  position: relative;
-  overflow: hidden;
+  background: var(--background-main);
+  color: var(--text-primary);
 }
 
 /* Add a subtle overlay for depth */
@@ -73,21 +73,19 @@ body::before {
 
 /* Login Container - Glassmorphism */
 .login-container {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 60px 40px;
   border-radius: 24px;
   width: 100%;
   max-width: 450px;
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
 }
 
 .login-container:hover {
@@ -102,7 +100,7 @@ body::before {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 10px;
-  background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,7 +109,7 @@ body::before {
 }
 
 .highlight {
-  background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,7 +119,7 @@ body::before {
 /* Subtitle */
 .subtitle {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   margin-bottom: 40px;
   font-weight: 400;
   line-height: 1.5;
@@ -138,7 +136,7 @@ body::before {
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--accent-solid);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -150,11 +148,11 @@ input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 18px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1.5px solid var(--accent-solid2);
   border-radius: 16px;
   font-size: 16px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #333;
+  background: var(--background-secondary);
+  color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -164,7 +162,7 @@ input[type="password"] {
 input[type="email"]:focus,
 input[type="password"]:focus {
   outline: none;
-  border-color: rgba(74, 222, 128, 0.6);
+  border-color: var(--accent-neon);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 
     0 0 0 4px rgba(74, 222, 128, 0.1),
@@ -189,7 +187,7 @@ input::placeholder {
 .primary-btn, .secondary-btn {
   padding: 16px 32px;
   border: none;
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -201,12 +199,13 @@ input::placeholder {
   min-width: 140px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-.primary-btn {
-  background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
-  color: white;
-  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
+  background: var(--accent-gradient);
+  color: #fff;
+  border-radius: 12px;
+  border: none;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .primary-btn:hover {
@@ -264,6 +263,9 @@ input::placeholder {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  background: var(--background-secondary);
+  color: var(--accent-neon);
+  border: 1px solid var(--accent-solid2);
 }
 
 .message.error {

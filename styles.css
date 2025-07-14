@@ -13,10 +13,25 @@ html {
     text-size-adjust: 100%; /* Modern standard */
 }
 
+/* ===== Modern Tech/Gamified Color Redesign ===== */
+:root {
+    --background-main: #0a0a0a;
+    --background-secondary: #18181b;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --accent-gradient: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
+    --accent-solid: #845ef7;
+    --accent-solid2: #5c7cfa;
+    --accent-neon: #00f2fe;
+    --card-bg: rgba(24,24,27,0.85);
+    --border: rgba(255,255,255,0.08);
+    --shadow: 0 2px 12px rgba(132,94,247,0.2);
+}
+
 body {
     font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #b3b3b3;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
+    color: var(--text-primary);
+    background: var(--background-main);
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
     min-height: 100vh;
@@ -1624,5 +1639,98 @@ textarea {
         background: rgba(34, 197, 94, 0.1);
         border-color: rgba(34, 197, 94, 0.3);
         color: #86efac;
+    }
+
+/* Headings and brand */
+h1, h2, h3, .brand, .entry-form-container h2, .game-objective h2 {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: unset;
+}
+
+.sidebar .brand {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: unset;
+}
+
+/* Cards, containers, and main content */
+.main-content, .card, .container, .objective-item, .step-card, .feature-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow);
+}
+
+/* Navigation, buttons */
+.nav-link, .logout-btn, .install-button, .primary-btn, .secondary-btn {
+    background: var(--accent-gradient) !important;
+    color: #fff !important;
+    border-radius: 12px;
+    border: none;
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover, .logout-btn:hover, .install-button:hover, .primary-btn:hover, .secondary-btn:hover {
+    filter: brightness(1.15) drop-shadow(0 0 8px var(--accent-neon));
+    color: #fff !important;
+}
+
+/* Inputs and forms */
+input, select, textarea {
+    background: var(--background-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--accent-solid2) !important;
+    border-radius: 10px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-neon) !important;
+    box-shadow: 0 0 8px var(--accent-neon);
+}
+
+.form-group label {
+    color: var(--accent-solid);
+}
+
+.level, .feature-title, .step-title {
+    color: var(--accent-neon) !important;
+}
+
+.status-message {
+    background: var(--background-secondary) !important;
+    color: var(--accent-neon) !important;
+    border: 1px solid var(--accent-solid2) !important;
+}
+
+/* Progress bars */
+progress, progress::-webkit-progress-bar {
+    background: var(--background-secondary);
+}
+progress::-webkit-progress-value {
+    background: var(--accent-gradient);
+}
+
+/* Achievement/level-up notifications */
+.level-up-message, .achievement-notification {
+    background: var(--accent-gradient) !important;
+    color: #fff !important;
+    border: 1px solid var(--accent-solid2) !important;
+}
+
+/* Mobile background overlays */
+@media (max-width: 768px) {
+    body {
+        background: var(--background-main) !important;
+    }
+    .main-content, .card, .container, .objective-item, .step-card, .feature-card {
+        background: var(--card-bg) !important;
+        border: 1px solid var(--border) !important;
     }
 }
