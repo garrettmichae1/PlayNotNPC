@@ -2,6 +2,7 @@ import { Auth } from './modules/auth.js';
 import { ActivityManager } from './modules/activityManager.js';
 import { initializeMobileNavigation } from './modules/mobileNav.js';
 import { initializeMobileOptimizations, testMobileFunctionality } from './modules/mobileOptimizations.js';
+import { pwa } from './modules/pwa.js';
 
 // --- AUTHENTICATION ---
 // Ensure user is authenticated
@@ -210,6 +211,29 @@ function updateStatsDisplay(stats) {
 async function initializeApp() {
     try {
         console.log('=== INITIALIZE APP START ===');
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('✅ Service Worker registered successfully:', registration);
+                
+                // Check for updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('🔄 New version available');
+                            // You could show a notification to the user here
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('❌ Service Worker registration failed:', error);
+            }
+        } else {
+            console.log('⚠️ Service Worker not supported');
+        }
         
         // Check authentication
         if (!Auth.isAuthenticated()) {

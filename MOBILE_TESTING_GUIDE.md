@@ -45,22 +45,22 @@
 5. **Debug Log**: Watch the real-time debug log for any issues
 
 ### **Step 3: Test Main App Pages**
-1. **Login Page**: `https://your-app-name.onrender.com/login` (replace with your actual Render URL)
+1. **Login Page**: `http://192.168.1.185:5000/login`
    - Should show styled login form
    - Buttons should be responsive to touch
    - No zoom on input focus
 
-2. **Main App**: `https://your-app-name.onrender.com/` (replace with your actual Render URL)
+2. **Main App**: `http://192.168.1.185:5000/`
    - Hamburger menu (☰) should appear in top-left
    - Tap to open/close navigation with smooth animation
    - Form submission should work with touch feedback
    - All buttons should have proper touch targets
 
 3. **Other Pages**:
-   - **Planner**: `https://your-app-name.onrender.com/planner.html`
-   - **Analytics**: `https://your-app-name.onrender.com/analytics.html`
-   - **Achievements**: `https://your-app-name.onrender.com/achievements.html`
-   - **Friends**: `https://your-app-name.onrender.com/friends.html`
+   - **Planner**: `http://192.168.1.185:5000/planner.html`
+   - **Analytics**: `http://192.168.1.185:5000/analytics.html`
+   - **Achievements**: `http://192.168.1.185:5000/achievements.html`
+   - **Friends**: `http://192.168.1.185:5000/friends.html`
 
 ## 🔧 **Developer Tools Testing**
 

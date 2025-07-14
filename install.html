@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install PlayNotNPC - PWA Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .install-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .install-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .install-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #c7b1ff 0%, #845ef7 50%, #5c7cfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .install-header p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+        
+        .install-steps {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .step-card {
+            background: linear-gradient(135deg, rgba(36, 32, 58, 0.8) 0%, rgba(26, 22, 45, 0.9) 100%);
+            border: 1px solid rgba(132, 94, 247, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(132, 94, 247, 0.3), transparent);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #845ef7, #5c7cfa);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            color: #a0a0a0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .step-image {
+            background: rgba(132, 94, 247, 0.1);
+            border: 1px solid rgba(132, 94, 247, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, rgba(36, 32, 58, 0.8) 0%, rgba(26, 22, 45, 0.9) 100%);
+            border: 1px solid rgba(132, 94, 247, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(132, 94, 247, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .feature-description {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .install-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #845ef7, #5c7cfa);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .install-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(132, 94, 247, 0.3);
+        }
+        
+        .install-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status-message {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+        
+        .status-success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+        
+        .status-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+        
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #f59e0b;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: rgba(132, 94, 247, 0.1);
+            color: #c7b1ff;
+            border: 1px solid rgba(132, 94, 247, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            background: rgba(132, 94, 247, 0.2);
+            border-color: rgba(132, 94, 247, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .install-container {
+                padding: 1rem;
+            }
+            
+            .install-header h1 {
+                font-size: 2rem;
+            }
+            
+            .step-card {
+                padding: 1.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="install-container">
+        <a href="index.html" class="back-button">← Back to App</a>
+        
+        <div class="install-header">
+            <h1>📱 Install PlayNotNPC</h1>
+            <p>Transform your mobile experience! Install PlayNotNPC as a Progressive Web App for quick access, offline functionality, and app-like features.</p>
+        </div>
+        
+        <div id="installStatus"></div>
+        
+        <div class="install-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-title">📱 iOS (Safari)</div>
+                <div class="step-description">
+                    <p><strong>Step 1:</strong> Open Safari and navigate to PlayNotNPC</p>
+                    <p><strong>Step 2:</strong> Tap the Share button (📤) at the bottom of the screen</p>
+                    <p><strong>Step 3:</strong> Scroll down and tap "Add to Home Screen"</p>
+                    <p><strong>Step 4:</strong> Customize the name if desired and tap "Add"</p>
+                </div>
+                <div class="step-image">📱</div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-title">🤖 Android (Chrome)</div>
+                <div class="step-description">
+                    <p><strong>Step 1:</strong> Open Chrome and navigate to PlayNotNPC</p>
+                    <p><strong>Step 2:</strong> Tap the menu button (⋮) in the top-right corner</p>
+                    <p><strong>Step 3:</strong> Tap "Add to Home screen" or "Install app"</p>
+                    <p><strong>Step 4:</strong> Tap "Add" to confirm installation</p>
+                </div>
+                <div class="step-image">🤖</div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-title">💻 Desktop (Chrome/Edge)</div>
+                <div class="step-description">
+                    <p><strong>Step 1:</strong> Open Chrome or Edge and navigate to PlayNotNPC</p>
+                    <p><strong>Step 2:</strong> Look for the install icon (📱) in the address bar</p>
+                    <p><strong>Step 3:</strong> Click "Install" to add to your desktop</p>
+                    <p><strong>Step 4:</strong> The app will appear in your applications</p>
+                </div>
+                <div class="step-image">💻</div>
+            </div>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Lightning Fast</div>
+                <div class="feature-description">Instantly load from your home screen with no app store downloads required</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">App-Like Experience</div>
+                <div class="feature-description">Full-screen mode, no browser UI, and native app feel</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <div class="feature-title">Push Notifications</div>
+                <div class="feature-description">Get XP reminders, achievement notifications, and activity updates</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <div class="feature-title">Offline Support</div>
+                <div class="feature-description">View your progress and plan activities even without internet</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-title">Auto Updates</div>
+                <div class="feature-description">Always get the latest features without manual updates</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <div class="feature-title">Background Sync</div>
+                <div class="feature-description">Activities sync automatically when connection is restored</div>
+            </div>
+        </div>
+        
+        <button id="installButton" class="install-button" style="display: none;">
+            📱 Install PlayNotNPC
+        </button>
+        
+        <div class="step-card">
+            <div class="step-number">🎯</div>
+            <div class="step-title">Why Install as PWA?</div>
+            <div class="step-description">
+                <p><strong>🎮 Better Gaming Experience:</strong> Transform your daily activities into a seamless character progression game</p>
+                <p><strong>📊 Always Accessible:</strong> Quick access to your stats, achievements, and planning tools</p>
+                <p><strong>🔔 Stay Motivated:</strong> Receive notifications to maintain your momentum and streaks</p>
+                <p><strong>📱 Native Feel:</strong> Works like a real app with smooth animations and full-screen mode</p>
+                <p><strong>💾 Offline Capability:</strong> View your progress and plan activities even without internet</p>
+                <p><strong>🔄 Seamless Updates:</strong> Always have the latest features without app store hassles</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+        const installStatus = document.getElementById('installStatus');
+
+        // Check if PWA is already installed
+        function checkIfInstalled() {
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                showStatus('✅ PlayNotNPC is already installed as a PWA!', 'success');
+                return true;
+            }
+            return false;
+        }
+
+        // Show status message
+        function showStatus(message, type = 'info') {
+            installStatus.innerHTML = `<div class="status-message status-${type}">${message}</div>`;
+        }
+
+        // Listen for beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('📱 Install prompt available');
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            if (!checkIfInstalled()) {
+                installButton.style.display = 'block';
+                showStatus('📱 Ready to install! Click the button below to add PlayNotNPC to your home screen.', 'info');
+            }
+        });
+
+        // Handle install button click
+        installButton.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+                showStatus('⚠️ Install prompt not available. Please use the manual installation steps above.', 'warning');
+                return;
+            }
+
+            installButton.disabled = true;
+            installButton.textContent = '📱 Installing...';
+
+            try {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    showStatus('🎉 PlayNotNPC installed successfully! Check your home screen.', 'success');
+                    installButton.style.display = 'none';
+                } else {
+                    showStatus('❌ Installation was cancelled. You can try again anytime!', 'warning');
+                    installButton.disabled = false;
+                    installButton.textContent = '📱 Install PlayNotNPC';
+                }
+            } catch (error) {
+                console.error('Installation error:', error);
+                showStatus('❌ Installation failed. Please try the manual steps above.', 'warning');
+                installButton.disabled = false;
+                installButton.textContent = '📱 Install PlayNotNPC';
+            }
+
+            deferredPrompt = null;
+        });
+
+        // Check if service worker is supported
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('✅ Service Worker registered:', registration);
+                    showStatus('🔧 PWA features are ready!', 'success');
+                })
+                .catch(error => {
+                    console.error('❌ Service Worker registration failed:', error);
+                    showStatus('⚠️ Some PWA features may not be available.', 'warning');
+                });
+        } else {
+            showStatus('⚠️ Service Worker not supported. Some PWA features may not work.', 'warning');
+        }
+
+        // Check installation status on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!checkIfInstalled()) {
+                showStatus('📱 Follow the steps above to install PlayNotNPC as a PWA!', 'info');
+            }
+        });
+
+        // Listen for app installed event
+        window.addEventListener('appinstalled', () => {
+            console.log('🎉 App was installed');
+            showStatus('🎉 PlayNotNPC installed successfully! Check your home screen.', 'success');
+            installButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html> 

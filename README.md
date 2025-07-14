@@ -87,8 +87,8 @@ git push heroku main
 📊 Graphs + advanced analytics
 🏆 Friend system & leaderboards
 🎯 Goal setting + habit tracking
-📱 React Native mobile app
-🔔 Push notifications
+📱 Progressive Web App (PWA) - Install to home screen
+🔔 Push notifications & offline support
 
 🛡 Security & Best Practices
 ✅ JWT with env-configurable secret
@@ -121,15 +121,23 @@ UptimeRobot — basic uptime monitoring
 🧩 New Activities: Extend /modules/tracker.js
 
 📎 Project Structure Overview
-bash
-Copy
-Edit
-src/
-├── modules/        # Core logic (auth, tracker, XP, storage)
-├── public/         # Frontend files (HTML/CSS/JS)
+```
+real-life-xp/
+├── modules/        # Core logic (auth, tracker, XP, storage, PWA)
 ├── routes/         # Express routes
 ├── utils/          # Reusable utilities
+├── manifest.json   # PWA manifest
+├── sw.js          # Service worker
+├── install.html    # PWA installation guide
 └── server.js       # Entry point
+```
+
+🚀 **PWA Features**
+- **Install to Home Screen**: One-tap installation on mobile/desktop
+- **Offline Support**: View progress and plan activities without internet
+- **Push Notifications**: XP reminders and achievement notifications
+- **Background Sync**: Activities sync when connection is restored
+- **App-like Experience**: Full-screen mode, no browser UI
 💼 Why This Project Matters
 This isn’t just a to-do list in disguise. PlayNotNPC:
 
