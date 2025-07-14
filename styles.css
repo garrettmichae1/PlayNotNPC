@@ -15,7 +15,7 @@ html {
 
 body {
     font-family: 'Poppins', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #e0e0e0;
+    color: #b3b3b3;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
@@ -288,7 +288,7 @@ body::after {
     display: block;
     margin-bottom: 0.8rem;
     font-size: 0.9rem;
-    color: #a0a0a0;
+    color: #808080;
     font-weight: 500;
     text-align: center;
 }
@@ -478,7 +478,7 @@ textarea {
     width: 100%;
     padding: 1.2rem 1.5rem;
     font-size: 1rem;
-    color: #e0e0e0;
+    color: #b3b3b3;
     background: linear-gradient(135deg, rgba(26, 22, 45, 0.8) 0%, rgba(15, 10, 26, 0.9) 100%);
     border: 2px solid rgba(132, 94, 247, 0.2);
     border-radius: 12px;
@@ -642,7 +642,7 @@ textarea {
 
 .entry-duration {
     font-size: 0.9rem;
-    color: #a0a0a0;
+    color: #808080;
     font-weight: 500;
 }
 
@@ -665,7 +665,7 @@ textarea {
 .entry-date {
     display: block;
     font-size: 0.8rem;
-    color: #888;
+    color: #6b6b6b;
     font-weight: 500;
 }
 
@@ -816,7 +816,7 @@ textarea {
 }
 
 .objective-item p {
-    color: #a0a0a0;
+    color: #808080;
     font-size: 0.95rem;
     line-height: 1.6;
     font-weight: 500;
@@ -1396,7 +1396,7 @@ textarea {
     
     .entry-duration {
         font-size: 14px;
-        color: #d0d0d0;
+        color: #a6a6a6;
     }
     
     /* Mobile user stats */
@@ -1423,7 +1423,7 @@ textarea {
     .xp-bar label {
         display: block;
         font-size: 14px;
-        color: #d0d0d0;
+        color: #a6a6a6;
         margin-bottom: 8px;
     }
     
@@ -1543,7 +1543,7 @@ textarea {
     
     .objective-item p {
         font-size: 14px;
-        color: #a0a0a0;
+        color: #808080;
         line-height: 1.5;
     }
     

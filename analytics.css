@@ -259,7 +259,7 @@ canvas {
     border: 2px solid rgba(132, 94, 247, 0.3);
     border-radius: 12px;
     background: linear-gradient(135deg, rgba(26, 22, 45, 0.8) 0%, rgba(15, 10, 26, 0.9) 100%);
-    color: #e0e0e0;
+    color: #b3b3b3;
     font-size: 0.95rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-backdrop-filter: blur(10px);
@@ -306,7 +306,7 @@ canvas {
 }
 
 .breakdown-table td {
-    color: #e0e0e0;
+    color: #b3b3b3;
     font-weight: 500;
 }
 
@@ -393,7 +393,7 @@ canvas {
 
 .category-details p {
     margin: 0;
-    color: #a0a0a0;
+    color: #808080;
     font-size: 0.95rem;
     font-weight: 500;
 }
@@ -413,7 +413,7 @@ canvas {
 .category-stats .stat-label {
     display: block;
     font-size: 0.85rem;
-    color: #888;
+    color: #6b6b6b;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;

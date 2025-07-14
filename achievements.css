@@ -142,7 +142,7 @@
 
 .achievement-info p {
     margin: 0;
-    color: #666;
+    color: #525252;
     font-size: 14px;
     line-height: 1.4;
 }
@@ -173,7 +173,7 @@
 
 .progress-text {
     font-size: 12px;
-    color: #666;
+    color: #525252;
     text-align: center;
 }
 
@@ -270,7 +270,7 @@
 
 .achievement-info p {
     margin: 0 0 10px 0;
-    color: #666;
+    color: #525252;
     font-size: 14px;
 }
 
