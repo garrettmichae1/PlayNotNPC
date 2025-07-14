@@ -138,6 +138,13 @@ real-life-xp/
 - **Push Notifications**: XP reminders and achievement notifications
 - **Background Sync**: Activities sync when connection is restored
 - **App-like Experience**: Full-screen mode, no browser UI
+
+🏆 **Friends Challenges System**
+- **Preset Challenge Templates**: Fitness, Study, Productivity, Streak, Variety
+- **Real-time Progress Tracking**: Automatic updates when activities are logged
+- **Social Competition**: Compete with friends for XP rewards
+- **Challenge Invites**: Send and accept challenge invitations
+- **Live Leaderboards**: See who's winning in real-time
 💼 Why This Project Matters
 This isn’t just a to-do list in disguise. PlayNotNPC:
 
