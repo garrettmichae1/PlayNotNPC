@@ -932,6 +932,119 @@
     }
 }
 
+@media (max-width: 600px) {
+    body, .main-content, .sidebar, .card, .stat-card, .challenge-card, .template-card, .invite-card, .history-item {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+    }
+    .challenge-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .stat-card, .challenge-card, .template-card, .invite-card, .history-item {
+        padding: 18px !important;
+        border-radius: 12px !important;
+    }
+    .tab-btn {
+        font-size: 16px !important;
+        padding: 14px 10px !important;
+    }
+    .template-grid, .challenges-grid, .history-list {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+    .challenge-form, .modal-content {
+        padding: 14px !important;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        font-size: 18px !important;
+        padding: 14px 10px !important;
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 18px !important;
+        padding: 16px 0 !important;
+        min-width: 100%;
+        border-radius: 10px !important;
+    }
+    .challenge-title, .invite-title, .history-title {
+        font-size: 22px !important;
+    }
+    .challenge-description, .invite-details, .history-details {
+        font-size: 16px !important;
+    }
+    .participant-avatar, .friend-avatar {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 20px !important;
+    }
+    .participant-name, .friend-name {
+        font-size: 18px !important;
+    }
+    .participant-score, .progress-score {
+        font-size: 18px !important;
+    }
+    .empty-state {
+        font-size: 18px !important;
+        padding: 40px 10px !important;
+    }
+    .empty-state-icon {
+        font-size: 48px !important;
+    }
+    .modal-header h2 {
+        font-size: 22px !important;
+    }
+    .modal-header, .modal-body {
+        padding: 14px !important;
+    }
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .progress-bar {
+        height: 14px !important;
+    }
+    .challenge-meta, .invite-meta, .history-stats {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+    .challenge-tabs {
+        margin-bottom: 18px !important;
+    }
+    .challenge-templates h3 {
+        font-size: 20px !important;
+    }
+    .template-details span {
+        font-size: 14px !important;
+    }
+    .form-group label {
+        font-size: 16px !important;
+    }
+    .challenge-form h3 {
+        font-size: 20px !important;
+    }
+    .challenge-participants h3, .challenge-progress h3 {
+        font-size: 18px !important;
+    }
+    .info-label, .info-value {
+        font-size: 16px !important;
+    }
+    .participant-rank {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 16px !important;
+    }
+    .progress-label, .progress-value {
+        font-size: 16px !important;
+    }
+    .filter-btn {
+        font-size: 16px !important;
+        padding: 10px 8px !important;
+    }
+    .challenge-modal {
+        padding: 0 !important;
+    }
+}
+
 /* Empty States */
 .empty-state {
     text-align: center;

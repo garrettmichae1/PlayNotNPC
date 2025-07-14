@@ -24,6 +24,14 @@ class ChallengeManager {
         this.loadInvites();
         this.loadHistory();
         this.updateStats();
+        // Ensure Create Challenge tab and templates are visible and first template is selected by default
+        this.switchTab('create');
+        setTimeout(() => {
+            const firstTemplate = document.querySelector('.template-card');
+            if (firstTemplate) {
+                firstTemplate.click();
+            }
+        }, 100);
     }
 
     async checkAuthentication() {
@@ -191,7 +199,19 @@ class ChallengeManager {
     async loadUserStats() {
         try {
             const stats = await getUserStats();
-            this.updateUserStats(stats);
+            // Only update sidebar stats
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                const levelElem = sidebar.querySelector('.level');
+                const xpBarLabel = sidebar.querySelector('.xp-bar label');
+                const xpProgress = sidebar.querySelector('#xp-progress');
+                if (levelElem) levelElem.textContent = `Level: ${stats.level}`;
+                if (xpBarLabel) xpBarLabel.textContent = `XP: ${stats.xp % 100} / 100`;
+                if (xpProgress) {
+                    xpProgress.value = stats.xp % 100;
+                    xpProgress.max = 100;
+                }
+            }
         } catch (error) {
             console.error('Error loading user stats:', error);
         }
