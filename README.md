@@ -1,152 +1,144 @@
-# PlayNotNPC - Real Life XP Gamified Activity Tracker
+PlayNotNPC — Real-Life XP Gamified Tracker
+Don’t just live life. Level it up.
 
-A full-stack web application that gamifies real-life activities with XP, levels, and achievements.
+PlayNotNPC is a full-stack productivity tracker that turns your real-life habits into a game. You earn XP, level up, unlock achievements, and track streaks as you progress through personal goals — fitness, study, finances, and more. Designed with scalability, security, and mobile-first UX in mind.
 
-## 🚀 Quick Start
+🔥 Key Technologies
+Frontend:
 
-### Development
-```bash
+HTML5, CSS3, Vanilla JS
+
+Responsive design (mobile-first)
+
+Modular JS architecture
+
+Backend:
+
+Node.js + Express.js
+
+MongoDB (Atlas)
+
+JWT-based Authentication
+
+RESTful API design
+
+DevOps & Hosting:
+
+Deploy-ready for: Render, Railway, Heroku
+
+Environment-based configuration (.env)
+
+Production-grade settings (CORS, rate limiting, security middleware)
+
+🚀 Getting Started
+📦 Local Development
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/playnotnpc.git
+cd playnotnpc
 npm install
 npm run dev
-```
-
-### Production Deployment
-
-#### Option 1: Render.com (Free Tier)
-1. **Connect your GitHub repo** to Render
-2. **Create a Web Service** with these settings:
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-   - Environment Variables:
-     ```
-     NODE_ENV=production
-     MONGODB_URI=your_mongodb_atlas_uri
-     JWT_SECRET=your_jwt_secret
-     PORT=10000
-     ```
-
-#### Option 2: Railway.app
-1. **Deploy from GitHub** to Railway
-2. **Add environment variables** in Railway dashboard
-3. **Auto-deploys** on git push
-
-#### Option 3: Heroku
-```bash
-heroku create your-app-name
-heroku config:set NODE_ENV=production
-heroku config:set MONGODB_URI=your_mongodb_uri
-heroku config:set JWT_SECRET=your_secret
-git push heroku main
-```
-
-## 🔧 Production Setup
-
-### 1. Environment Variables
-Create `.env` file:
-```env
+🌐 Deployment Options
+🔧 Common Environment Variables
+env
+Copy
+Edit
 NODE_ENV=production
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/real-life-xp
-JWT_SECRET=your-super-secret-jwt-key
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_super_secret
 PORT=5000
-```
+✅ Deploy to Render.com
+Connect GitHub → New Web Service
 
-### 2. Database Setup
-- **MongoDB Atlas** (free tier available)
-- **Create database** and user
-- **Whitelist IP addresses** (0.0.0.0/0 for all)
+Build Command: npm install
 
-### 3. Security Enhancements
-- **HTTPS** (automatic with most cloud providers)
-- **Rate limiting** (add `express-rate-limit`)
-- **CORS configuration** for production domains
-- **Input validation** with Joi or express-validator
+Start Command: npm start
 
-## 📱 User Features
+Set environment variables above
 
-### Current Features
-- ✅ User authentication (login/register)
-- ✅ Activity tracking with XP system
-- ✅ Level progression (1-100+)
-- ✅ Statistics dashboard
-- ✅ Streak counting
-- ✅ Achievement badges
-- ✅ Mobile-optimized interface
-- ✅ Comprehensive mobile testing
+✅ Deploy to Railway.app
+One-click GitHub deployment
 
-### Planned Features
-- 📅 **Calendar view** of activities
-- 📊 **Advanced analytics** and charts
-- 🏆 **Leaderboards** and social features
-- 🎯 **Goal setting** and reminders
-- 📱 **Mobile app** (React Native)
-- 🔔 **Push notifications**
+Add .env variables in dashboard
 
-## 🛠️ Development Roadmap
+Auto-deploy on git push
 
-### Phase 1: Core Features ✅
-- [x] User authentication
-- [x] Activity tracking
-- [x] XP/Level system
-- [x] Basic statistics
+✅ Deploy to Heroku
+bash
+Copy
+Edit
+heroku create playnotnpc
+heroku config:set NODE_ENV=production
+heroku config:set MONGODB_URI=...
+heroku config:set JWT_SECRET=...
+git push heroku main
+🎯 Core Features (Live & Functional)
+✅ Secure auth system (JWT)
+✅ Activity logging with XP gain
+✅ Level progression (1-100+)
+✅ Dashboard with stats + streaks
+✅ Achievement badges
+✅ Fully mobile-optimized UI
+✅ Modular, scalable codebase
 
-### Phase 2: Enhanced UX ✅
-- [x] Mobile responsiveness
-- [x] Touch-friendly interface
-- [x] Mobile navigation
-- [x] Form optimizations
+📍 Planned Enhancements
+🗓 Calendar view for history
+📊 Graphs + advanced analytics
+🏆 Friend system & leaderboards
+🎯 Goal setting + habit tracking
+📱 React Native mobile app
+🔔 Push notifications
 
-### Phase 3: Social Features 📈
-- [ ] User profiles
-- [ ] Friend system
-- [ ] Activity sharing
-- [ ] Community challenges
+🛡 Security & Best Practices
+✅ JWT with env-configurable secret
 
-### Phase 4: Advanced Features 🎯
-- [ ] Goal setting
-- [ ] Habit tracking
-- [ ] AI insights
-- [ ] Export data
+✅ MongoDB with role-based access
 
-## 🔒 Security Checklist
+✅ Rate limiting (express-rate-limit)
 
-- [ ] HTTPS enabled
-- [ ] Environment variables set
-- [ ] JWT secret changed
-- [ ] Database credentials secure
-- [ ] Input validation added
-- [ ] Rate limiting implemented
-- [ ] CORS configured
-- [ ] Error handling improved
+✅ Input validation (express-validator)
 
-## 📊 Analytics & Monitoring
+✅ CORS setup for production
 
-### Recommended Tools
-- **Google Analytics** for user behavior
-- **Sentry** for error tracking
-- **MongoDB Atlas** for database monitoring
-- **Uptime Robot** for availability monitoring
+✅ 404/500 error handling
 
-## 🎨 Customization
+🔐 HTTPS auto-enabled (via platform)
 
-### Branding
-- Update colors in `styles.css`
-- Replace logo and favicon
-- Customize achievement badges
-- Modify XP calculation formulas
+📊 Monitoring Tools (Suggested)
+Google Analytics — user behavior
 
-### Features
-- Add new activity types
-- Create custom achievements
-- Implement different leveling curves
-- Add gamification elements
+MongoDB Atlas — DB performance
 
-## 📞 Support
+Sentry — real-time error logging
 
-For issues or feature requests:
-- Create GitHub issue
-- Email: support@reallifexp.com
-- Discord: [Join our community]
+UptimeRobot — basic uptime monitoring
 
----
+🎨 Customization Guide
+🖌 UI Theme: Edit styles.css
+🏅 Achievements: Customize badge logic
+📈 XP System: Adjust XP formula in /modules/xpManager.js
+🧩 New Activities: Extend /modules/tracker.js
 
-**Built with ❤️ using Node.js, Express, MongoDB, and Vanilla JavaScript**
+📎 Project Structure Overview
+bash
+Copy
+Edit
+src/
+├── modules/        # Core logic (auth, tracker, XP, storage)
+├── public/         # Frontend files (HTML/CSS/JS)
+├── routes/         # Express routes
+├── utils/          # Reusable utilities
+└── server.js       # Entry point
+💼 Why This Project Matters
+This isn’t just a to-do list in disguise. PlayNotNPC:
+
+Demonstrates full-stack capability from UI/UX to deployment
+
+Shows attention to security, scalability, and modularity
+
+Is production-ready and deployable in under 10 minutes
+
+Uses clean, maintainable code with no external frontend framework (vanilla JS for control)
+
+EMAIL: garrettiswoodside@gmail.com
