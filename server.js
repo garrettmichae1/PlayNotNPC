@@ -57,6 +57,7 @@ app.use('/api/activities', require('./routes/activities'));
 app.use('/api/performance', require('./routes/performance'));
 app.use('/api/achievements', require('./routes/achievements'));
 app.use('/api/friends', require('./routes/friends'));
+app.use('/api/challenges', require('./routes/challenges'));
 
 // Health check endpoint for monitoring
 app.get('/health', async (req, res) => {

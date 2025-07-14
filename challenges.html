@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges - PlayNotNPC</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#845ef7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PlayNotNPC">
+    <meta name="description" content="Transform your daily activities into character progression. Track workouts, work, and study to earn XP and evolve from background character to main protagonist!">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="192x192" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="512x512" href="/manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="challenges.css">
+</head>
+<body>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <nav class="sidebar" id="sidebar">
+            <h1 class="brand">🏆 Challenges</h1>
+            <a href="index.html" class="nav-link">Go to Diary</a>
+            <a href="planner.html" class="nav-link">Go to Planner 🗓️</a>
+            <a href="analytics.html" class="nav-link">Analytics 📊</a>
+            <a href="achievements.html" class="nav-link">Achievements 🏆</a>
+            <a href="friends.html" class="nav-link">Friends 👥</a>
+            <a href="install.html" class="nav-link">📱 Install App</a>
+            
+            <div class="user-stats">
+                <div class="level">Level: 1</div>
+                <div class="xp-bar">
+                    <label for="xp-progress">XP: 0 / 100</label>
+                    <progress id="xp-progress" value="0" max="100"></progress>
+                </div>
+                <div class="badge-container"></div>
+            </div>
+            
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Challenge Stats -->
+            <section class="challenge-stats">
+                <div class="stat-card">
+                    <h3>Active Challenges</h3>
+                    <div class="stat-value" id="active-challenges">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Challenges Won</h3>
+                    <div class="stat-value" id="challenges-won">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total XP Earned</h3>
+                    <div class="stat-value" id="challenge-xp">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Win Rate</h3>
+                    <div class="stat-value" id="win-rate">0%</div>
+                </div>
+            </section>
+
+            <!-- Navigation Tabs -->
+            <section class="challenge-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="active">Active Challenges</button>
+                    <button class="tab-btn" data-tab="create">Create Challenge</button>
+                    <button class="tab-btn" data-tab="invites">Challenge Invites</button>
+                    <button class="tab-btn" data-tab="history">Challenge History</button>
+                </div>
+            </section>
+
+            <!-- Active Challenges Tab -->
+            <section id="active-tab" class="tab-content active">
+                <div class="challenges-grid" id="active-challenges-container">
+                    <!-- Active challenges will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Create Challenge Tab -->
+            <section id="create-tab" class="tab-content">
+                <div class="create-challenge-container">
+                    <h2>Create a New Challenge</h2>
+                    
+                    <!-- Preset Challenge Templates -->
+                    <div class="challenge-templates">
+                        <h3>Choose a Challenge Type</h3>
+                        <div class="template-grid">
+                            <div class="template-card" data-template="fitness">
+                                <div class="template-icon">💪</div>
+                                <h4>Fitness Warrior</h4>
+                                <p>Complete the most workouts in 7 days</p>
+                                <div class="template-details">
+                                    <span>Duration: 7 days</span>
+                                    <span>Goal: Most workouts</span>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card" data-template="study">
+                                <div class="template-icon">📚</div>
+                                <h4>Study Sprint</h4>
+                                <p>Log the most study hours in 5 days</p>
+                                <div class="template-details">
+                                    <span>Duration: 5 days</span>
+                                    <span>Goal: Most study hours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card" data-template="productivity">
+                                <div class="template-icon">⚡</div>
+                                <h4>Productivity Race</h4>
+                                <p>Earn the most XP in 3 days</p>
+                                <div class="template-details">
+                                    <span>Duration: 3 days</span>
+                                    <span>Goal: Most XP earned</span>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card" data-template="streak">
+                                <div class="template-icon">🔥</div>
+                                <h4>Streak Master</h4>
+                                <p>Maintain the longest activity streak</p>
+                                <div class="template-details">
+                                    <span>Duration: 10 days</span>
+                                    <span>Goal: Longest streak</span>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card" data-template="variety">
+                                <div class="template-icon">🎭</div>
+                                <h4>Variety Champion</h4>
+                                <p>Complete activities in all categories</p>
+                                <div class="template-details">
+                                    <span>Duration: 7 days</span>
+                                    <span>Goal: Category completion</span>
+                                </div>
+                            </div>
+                            
+                            <div class="template-card" data-template="custom">
+                                <div class="template-icon">🎯</div>
+                                <h4>Custom Challenge</h4>
+                                <p>Create your own challenge rules</p>
+                                <div class="template-details">
+                                    <span>Duration: Custom</span>
+                                    <span>Goal: Custom</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenge Creation Form -->
+                    <div class="challenge-form" id="challenge-form" style="display: none;">
+                        <h3 id="form-title">Create Challenge</h3>
+                        
+                        <div class="form-group">
+                            <label for="challenge-name">Challenge Name</label>
+                            <input type="text" id="challenge-name" placeholder="Enter challenge name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge-description">Description</label>
+                            <textarea id="challenge-description" placeholder="Describe your challenge"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="challenge-duration">Duration (days)</label>
+                                <input type="number" id="challenge-duration" min="1" max="30" value="7">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="challenge-type">Challenge Type</label>
+                                <select id="challenge-type">
+                                    <option value="workouts">Most Workouts</option>
+                                    <option value="study_hours">Most Study Hours</option>
+                                    <option value="work_hours">Most Work Hours</option>
+                                    <option value="xp_earned">Most XP Earned</option>
+                                    <option value="streak">Longest Streak</option>
+                                    <option value="variety">Category Variety</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge-friends">Select Friends</label>
+                            <div class="friends-selector" id="friends-selector">
+                                <!-- Friends will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge-reward">Winner Reward (XP)</label>
+                            <input type="number" id="challenge-reward" min="50" max="1000" value="200">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" id="cancel-challenge" class="btn-secondary">Cancel</button>
+                            <button type="button" id="create-challenge" class="btn-primary">Create Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Invites Tab -->
+            <section id="invites-tab" class="tab-content">
+                <div class="invites-container" id="invites-container">
+                    <!-- Challenge invites will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Challenge History Tab -->
+            <section id="history-tab" class="tab-content">
+                <div class="history-container">
+                    <h2>Challenge History</h2>
+                    <div class="history-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="won">Won</button>
+                        <button class="filter-btn" data-filter="lost">Lost</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                    <div class="history-list" id="history-container">
+                        <!-- Challenge history will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Challenge Details Modal -->
+    <div id="challenge-modal" class="challenge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-challenge-name">Challenge Name</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="challenge-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value" id="modal-challenge-type">Fitness</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Duration:</span>
+                        <span class="info-value" id="modal-challenge-duration">7 days</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">End Date:</span>
+                        <span class="info-value" id="modal-challenge-end">Dec 31, 2024</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Reward:</span>
+                        <span class="info-value" id="modal-challenge-reward">200 XP</span>
+                    </div>
+                </div>
+                
+                <div class="challenge-participants">
+                    <h3>Participants</h3>
+                    <div class="participants-list" id="modal-participants">
+                        <!-- Participants will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="challenge-progress">
+                    <h3>Progress</h3>
+                    <div class="progress-list" id="modal-progress">
+                        <!-- Progress will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="modules/mobileNav.js"></script>
+    <script type="module" src="challenges.js"></script>
+    <script type="module">
+        import { initializeMobileNavigation } from './modules/mobileNav.js';
+        import { initializeMobileOptimizations } from './modules/mobileOptimizations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileNavigation();
+            initializeMobileOptimizations();
+        });
+    </script>
+</body>
+</html> 
