@@ -85,6 +85,37 @@
     font-size: 14px;
   }
 }
+    .pwa-info-box {
+      display: flex;
+      align-items: flex-start;
+      background: linear-gradient(90deg, #e3f2fd 0%, #f5faff 100%);
+      border-left: 4px solid #2196F3;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 24px 0 0 0;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+      font-size: 1em;
+      color: #1565c0;
+    }
+    .pwa-info-icon {
+      font-size: 1.7em;
+      margin-right: 12px;
+      margin-top: 2px;
+    }
+    .pwa-info-content {
+      flex: 1;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .pwa-info-box {
+        font-size: 0.98em;
+        padding: 12px 10px;
+      }
+      .pwa-info-icon {
+        font-size: 1.3em;
+        margin-right: 8px;
+      }
+    }
 </style>
 </head>
 <body class="login-body">
@@ -110,6 +141,13 @@
 
       <p id="message" class="message"></p>
     </form>
+    <div class="pwa-info-box">
+      <span class="pwa-info-icon">📱</span>
+      <div class="pwa-info-content">
+        <strong>What is a PWA?</strong><br>
+        This site is a Progressive Web App (PWA). If you add it to your home screen, it will work just like a real app—full screen, fast, and always just a tap away!
+      </div>
+    </div>
   </div>
 
   <script type="module" src="login.js"></script>
