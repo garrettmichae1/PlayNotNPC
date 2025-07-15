@@ -58,6 +58,41 @@ app.use('/api/performance', require('./routes/performance'));
 app.use('/api/achievements', require('./routes/achievements'));
 app.use('/api/friends', require('./routes/friends'));
 
+// --- STRIPE TIP ROUTE ---
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Set STRIPE_SECRET_KEY in your .env file
+
+app.post('/api/tip/create-checkout-session', async (req, res) => {
+    try {
+        const { amount } = req.body;
+        const allowedAmounts = [2, 5, 10, 25];
+        if (!allowedAmounts.includes(Number(amount))) {
+            return res.status(400).json({ error: 'Invalid tip amount.' });
+        }
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: `Tip the Developer ($${amount})`,
+                        },
+                        unit_amount: amount * 100, // Stripe expects cents
+                    },
+                    quantity: 1,
+                },
+            ],
+            mode: 'payment',
+            success_url: `${process.env.APP_URL || 'http://localhost:5000'}/tip.html?success=1`,
+            cancel_url: `${process.env.APP_URL || 'http://localhost:5000'}/tip.html?canceled=1`,
+        });
+        res.json({ url: session.url });
+    } catch (err) {
+        console.error('Stripe Checkout error:', err);
+        res.status(500).json({ error: 'Unable to create Stripe Checkout session.' });
+    }
+});
+
 // Health check endpoint for monitoring
 app.get('/health', async (req, res) => {
     try {
