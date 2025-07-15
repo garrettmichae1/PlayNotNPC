@@ -36,7 +36,8 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.17.0",
-    "mongoose": "^8.16.3"
+    "mongoose": "^8.16.3",
+    "stripe": "^18.3.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
