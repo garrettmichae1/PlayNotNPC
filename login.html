@@ -88,23 +88,26 @@
     .pwa-info-box {
       display: flex;
       align-items: flex-start;
-      background: linear-gradient(90deg, #e3f2fd 0%, #f5faff 100%);
-      border-left: 4px solid #2196F3;
-      border-radius: 10px;
+      background: rgba(30, 20, 50, 0.85);
+      border-left: 4px solid #8e2de2;
+      border-radius: 12px;
       padding: 14px 16px;
       margin: 24px 0 0 0;
-      box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+      box-shadow: 0 2px 12px rgba(142,45,226,0.10);
       font-size: 1em;
-      color: #1565c0;
+      color: #fff;
+      transition: background 0.2s, color 0.2s;
     }
     .pwa-info-icon {
       font-size: 1.7em;
       margin-right: 12px;
       margin-top: 2px;
+      color: #8e2de2;
     }
     .pwa-info-content {
       flex: 1;
       line-height: 1.5;
+      color: #fff;
     }
     @media (max-width: 600px) {
       .pwa-info-box {
@@ -121,7 +124,7 @@
 <body class="login-body">
   <div class="login-container">
     <h1>🔐 Login to <span class="highlight">PlayNotNPC</span></h1>
-    <p class="subtitle">Transform your daily activities into epic achievements</p>
+    <p class="subtitle">Level up your real life!<br>Track habits and activities, earn XP, unlock achievements, and visualize your progress with beautiful analytics. Set goals, maintain streaks, and connect with friends—all in a seamless, app-like experience.</p>
 
     <form id="loginForm">
       <div class="form-group">
