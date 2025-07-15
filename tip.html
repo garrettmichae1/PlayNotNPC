@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip the Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tip-container {
+            max-width: 400px;
+            margin: 60px auto 0 auto;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(33,150,243,0.12);
+            padding: 32px 24px 28px 24px;
+            text-align: center;
+        }
+        .tip-emoji {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .tip-title {
+            color: #2196F3;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .tip-message {
+            color: #444;
+            font-size: 1.1em;
+            margin-bottom: 24px;
+        }
+        .tip-btn {
+            background: linear-gradient(135deg, #2196F3 0%, #4CAF50 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 36px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(33,150,243,0.10);
+            transition: background 0.2s;
+        }
+        .tip-btn:hover {
+            background: linear-gradient(135deg, #1976D2 0%, #388E3C 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="tip-container">
+        <div class="tip-emoji">💸</div>
+        <div class="tip-title">Tip the Developer</div>
+        <div class="tip-message">
+            If you enjoy using this app, consider leaving a small tip!<br>
+            Your support helps keep the project alive and growing. Thank you! 🙏
+        </div>
+        <button class="tip-btn" id="tipNowBtn">Tip Now</button>
+    </div>
+    <script>
+        document.getElementById('tipNowBtn').onclick = function() {
+            alert('Stripe integration coming soon!');
+        };
+    </script>
+</body>
+</html> 
