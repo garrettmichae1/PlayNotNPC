@@ -403,7 +403,7 @@ class FriendsPage {
                 throw new Error(error.message);
             }
 
-            alert('Friend request sent successfully!');
+            showFriendNotification('Friend request sent successfully!');
             this.performSearch(); // Refresh search results
 
         } catch (error) {
@@ -422,7 +422,7 @@ class FriendsPage {
 
             if (!response.ok) throw new Error('Failed to accept request');
 
-            alert('Friend request accepted!');
+            showFriendNotification('Friend request accepted!');
             await this.loadData(); // Refresh all data
 
         } catch (error) {
@@ -441,7 +441,7 @@ class FriendsPage {
 
             if (!response.ok) throw new Error('Failed to decline request');
 
-            alert('Friend request declined');
+            showFriendNotification('Friend request declined');
             await this.loadData(); // Refresh all data
 
         } catch (error) {
@@ -462,7 +462,7 @@ class FriendsPage {
 
             if (!response.ok) throw new Error('Failed to remove friend');
 
-            alert('Friend removed successfully');
+            showFriendNotification('Friend removed successfully');
             await this.loadData(); // Refresh all data
 
         } catch (error) {
@@ -583,6 +583,49 @@ class FriendsPage {
             console.error('Error updating user stats:', error);
         }
     }
+}
+
+// Add this helper for friend notifications
+function showFriendNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'friend-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">🤝</div>
+            <div class="notification-text">
+                <h3>Friend Update</h3>
+                <p>${message}</p>
+            </div>
+        </div>
+    `;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #2196F3 0%, #4CAF50 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+        z-index: 1000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        max-width: 340px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        font-size: 16px;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
 }
 
 // Initialize friends page when DOM is loaded
