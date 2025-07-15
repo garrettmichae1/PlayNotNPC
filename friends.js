@@ -451,7 +451,8 @@ class FriendsPage {
     }
 
     async removeFriend(friendshipId) {
-        if (!confirm('Are you sure you want to remove this friend?')) return;
+        const confirmed = await showRemoveFriendModal();
+        if (!confirmed) return;
 
         try {
             const token = localStorage.getItem('token');
@@ -626,6 +627,45 @@ function showFriendNotification(message) {
             }
         }, 300);
     }, 4000);
+}
+
+// Add this helper for a custom confirmation modal
+function showRemoveFriendModal() {
+    return new Promise((resolve) => {
+        // Remove any existing modal
+        const existing = document.getElementById('remove-friend-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'remove-friend-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);z-index:2000;"></div>
+            <div class="modal-content" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:32px 28px 24px 28px;border-radius:16px;box-shadow:0 8px 32px rgba(33,150,243,0.18);z-index:2001;max-width:90vw;width:350px;text-align:center;">
+                <div style="font-size:40px;margin-bottom:12px;">👥</div>
+                <h2 style="margin:0 0 10px 0;color:#2196F3;font-size:1.4em;">Remove Friend?</h2>
+                <p style="color:#444;margin-bottom:24px;">Are you sure you want to remove this friend? This action cannot be undone.</p>
+                <div style="display:flex;gap:16px;justify-content:center;">
+                    <button id="cancelRemoveFriendBtn" style="padding:10px 22px;border:none;border-radius:8px;background:#e0e0e0;color:#333;font-weight:600;cursor:pointer;font-size:1em;">Cancel</button>
+                    <button id="confirmRemoveFriendBtn" style="padding:10px 22px;border:none;border-radius:8px;background:linear-gradient(135deg,#2196F3 0%,#4CAF50 100%);color:white;font-weight:600;cursor:pointer;font-size:1em;">Remove</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        // Button handlers
+        modal.querySelector('#cancelRemoveFriendBtn').onclick = () => {
+            modal.remove();
+            resolve(false);
+        };
+        modal.querySelector('#confirmRemoveFriendBtn').onclick = () => {
+            modal.remove();
+            resolve(true);
+        };
+        // Allow clicking overlay to cancel
+        modal.querySelector('.modal-overlay').onclick = () => {
+            modal.remove();
+            resolve(false);
+        };
+    });
 }
 
 // Initialize friends page when DOM is loaded
