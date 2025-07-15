@@ -328,6 +328,12 @@ async function initializeApp() {
                     alert("Please fill in all fields with valid data!");
                     return;
                 }
+                // NEW: Duration limit validation
+                if (parseFloat(amountInput.value) > 720) {
+                    showDurationLimitNotification();
+                    amountInput.focus();
+                    return;
+                }
 
                 try {
                     const activityData = {
@@ -497,6 +503,49 @@ function showAchievementNotification(achievement) {
     }, 100);
     
     // Auto-remove after 4 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Add this helper for the duration limit notification
+function showDurationLimitNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'achievement-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">⏰</div>
+            <div class="notification-text">
+                <h3>Whoa! That's too much time!</h3>
+                <p>The maximum allowed for a single activity is <strong>720 minutes (12 hours)</strong>.<br>Please enter a value less than or equal to 720.</p>
+            </div>
+        </div>
+    `;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+        z-index: 1000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        max-width: 340px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        font-size: 16px;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
     setTimeout(() => {
         notification.style.transform = 'translateX(400px)';
         setTimeout(() => {
