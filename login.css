@@ -55,10 +55,10 @@ body::before {
   width: 200%;
   height: 200%;
   background: 
-    radial-gradient(circle, rgba(45, 74, 62, 0.2) 2px, transparent 2px),
-    radial-gradient(circle, rgba(34, 51, 43, 0.15) 1px, transparent 1px);
-  background-size: 80px 80px, 40px 40px;
-  animation: tacticalFloat 25s linear infinite;
+    radial-gradient(circle, rgba(132, 94, 247, 0.35) 5px, transparent 5px), /* accent purple */
+    radial-gradient(circle, rgba(76, 175, 255, 0.22) 4px, transparent 4px); /* accent blue */
+  background-size: 110px 110px, 60px 60px;
+  animation: tacticalFloat 36s linear infinite;
   z-index: 0;
 }
 
