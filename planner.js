@@ -7,6 +7,55 @@ if (!Auth.isAuthenticated()) {
     window.location.href = 'login.html';
 }
 
+// Add this helper for form notifications
+function showFormNotification(message, type = 'warning') {
+    const notification = document.createElement('div');
+    notification.className = 'form-notification';
+    
+    const icon = type === 'warning' ? '⚠️' : type === 'error' ? '❌' : 'ℹ️';
+    const bgColor = type === 'warning' ? 'linear-gradient(135deg, #ff9800 0%, #ffb74d 100%)' : 
+                   type === 'error' ? 'linear-gradient(135deg, #f44336 0%, #ef5350 100%)' : 
+                   'linear-gradient(135deg, #2196F3 0%, #4CAF50 100%)';
+    
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">${icon}</div>
+            <div class="notification-text">
+                <h3>${type === 'warning' ? 'Please Check' : type === 'error' ? 'Error' : 'Info'}</h3>
+                <p>${message}</p>
+            </div>
+        </div>
+    `;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${bgColor};
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+        z-index: 1000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        max-width: 340px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        font-size: 16px;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
 // --- STATE ---
 let currentDate = new Date();
 let selectedDate = null;
@@ -117,7 +166,7 @@ function handleAddPlan(event) {
     console.log('📱 Plan form submission started');
     
     if (!selectedDate) {
-        alert("Please select a day from the calendar first!");
+        showFormNotification("Please select a day from the calendar first!", "warning");
         return;
     }
 
@@ -133,7 +182,7 @@ function handleAddPlan(event) {
 
     if (!titleInput || !amountInput || !typeInput) {
         console.error('📱 Form elements not found');
-        alert('Form elements not found. Please refresh the page.');
+        showFormNotification('Form elements not found. Please refresh the page.', 'error');
         return;
     }
 
@@ -144,7 +193,7 @@ function handleAddPlan(event) {
     console.log('📱 Form values:', { title, amount, type });
 
     if (!title || isNaN(amount) || amount <= 0) {
-        alert("Please fill in all fields with valid values.");
+        showFormNotification("Please fill in all fields with valid values.", "warning");
         return;
     }
 
