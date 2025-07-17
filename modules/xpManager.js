@@ -1,6 +1,6 @@
 export class XPManager {
   constructor() {
-    this.xp = 0;
+    this.xp = 0; // XP within the current level
     this.level = 1;
   }
 
@@ -10,8 +10,18 @@ export class XPManager {
       study: 2,
       money: 0.5
     };
-    this.xp += (activity.amount * (rates[activity.type.toLowerCase()] || 1));
-    this.level = Math.floor(this.xp / 100) + 1;
+    let xpToAdd = activity.amount * (rates[activity.type.toLowerCase()] || 1);
+    while (xpToAdd > 0) {
+      const xpNeeded = this.level * 100 - this.xp;
+      if (xpToAdd >= xpNeeded) {
+        this.level += 1;
+        xpToAdd -= xpNeeded;
+        this.xp = 0;
+      } else {
+        this.xp += xpToAdd;
+        xpToAdd = 0;
+      }
+    }
   }
 
   recalculateFromActivities(activities) {
