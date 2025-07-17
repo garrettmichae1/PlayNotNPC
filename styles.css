@@ -111,6 +111,7 @@ body::after {
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 3.5rem;
 }
 
 .card::before {
@@ -159,7 +160,7 @@ body::after {
 
 .main-content {
     flex-grow: 1;
-    padding: 2.5rem;
+    padding: 3.5rem 2.5rem 3.5rem 2.5rem;
     overflow-y: auto;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(132, 94, 247, 0.05) 50%, rgba(240, 147, 251, 0.05) 100%);
     backdrop-filter: blur(10px);
@@ -974,8 +975,12 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    .main-content, .card {
-        padding: 1.5rem;
+    .main-content {
+        padding: 1.5rem 0.5rem 2rem 0.5rem;
+    }
+    .card {
+        padding: 1.5rem 0.75rem;
+        margin-bottom: 2rem;
     }
     
     .sidebar {
@@ -1735,82 +1740,34 @@ progress::-webkit-progress-value {
     }
 }
 
-/* ===== Improved Section Spacing for Better Flow ===== */
+/* ===== Improved Section Spacing ===== */
 .entry-form-container {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     position: relative;
-}
-
-.entry-form-container::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(132, 94, 247, 0.3), transparent);
 }
 
 .entry-list-container {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
     position: relative;
-}
-
-.entry-list-container::before {
-    content: '📝';
-    position: absolute;
-    top: -0.5em;
-    left: 1rem;
-    font-size: 1.5rem;
-    background: linear-gradient(135deg, rgba(132, 94, 247, 0.2) 0%, rgba(92, 124, 250, 0.15) 100%);
-    padding: 0.5em;
-    border-radius: 50%;
-    border: 2px solid rgba(132, 94, 247, 0.3);
 }
 
 .game-objective {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     position: relative;
-}
-
-.game-objective::before {
-    content: '🎯';
-    position: absolute;
-    top: -0.5em;
-    left: 1rem;
-    font-size: 1.5rem;
-    background: linear-gradient(135deg, rgba(132, 94, 247, 0.2) 0%, rgba(92, 124, 250, 0.15) 100%);
-    padding: 0.5em;
-    border-radius: 50%;
-    border: 2px solid rgba(132, 94, 247, 0.3);
 }
 
 /* Mobile optimizations for section spacing */
 @media (max-width: 768px) {
     .entry-form-container {
-        margin-bottom: 1.5rem;
-    }
-    
-    .entry-form-container::after {
-        bottom: -0.75rem;
-        width: 40px;
+        margin-bottom: 20.5em;
     }
     
     .entry-list-container {
-        margin-bottom: 2rem;
-    }
-    
-    .entry-list-container::before,
-    .game-objective::before {
-        top: -0.25rem;
-        left: 0.75rem;
-        font-size: 1.2rem;
-        padding: 0.4em;
+        margin-bottom: 3em;
     }
     
     .game-objective {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
     }
 }
 
