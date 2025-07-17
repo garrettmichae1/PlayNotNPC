@@ -1,159 +1,144 @@
-PlayNotNPC — Real-Life XP Gamified Tracker
-Don’t just live life. Level it up.
+# PlayNotNPC — Real-Life XP Gamified Tracker
 
-PlayNotNPC is a full-stack productivity tracker that turns your real-life habits into a game. You earn XP, level up, unlock achievements, and track streaks as you progress through personal goals — fitness, study, finances, and more. Designed with scalability, security, and mobile-first UX in mind.
+**Level up your life. Track, analyze, and gamify your real-world achievements.**
 
-🔥 Key Technologies
-Frontend:
+---
 
-HTML5, CSS3, Vanilla JS
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Deployment](#deployment)
+- [Security](#security)
+- [Customization](#customization)
+- [Contributing](#contributing)
+- [License](#license)
 
-Responsive design (mobile-first)
+---
 
-Modular JS architecture
+## Overview
+PlayNotNPC is a full-stack productivity and habit-tracking platform that transforms your daily activities into a gamified experience. Users log real-life activities, earn XP, level up, unlock achievements, and compete with friends—all within a secure, scalable, and mobile-optimized environment.
 
-Backend:
+---
 
-Node.js + Express.js
+## Features
+- **User Authentication:** Secure JWT-based registration and login.
+- **Activity Logging:** Track workouts, study sessions, work, and more.
+- **XP & Level System:** Dynamic XP calculation, multi-level progression, and XP carryover.
+- **Achievements:** Unlock badges for milestones, streaks, and special actions.
+- **Dashboard:** Real-time stats, streaks, and analytics.
+- **Friends & Challenges:** Add friends, compete in challenges, and view leaderboards.
+- **Mobile-First Design:** Responsive UI, PWA support, and offline capabilities.
+- **Stripe Integration:** Secure tipping for developer support.
+- **Robust Security:** CORS, rate limiting, input validation, and secure headers.
+- **Extensible & Maintainable:** Modular codebase, clear documentation, and scalable architecture.
 
-MongoDB (Atlas)
+---
 
-JWT-based Authentication
+## Architecture
+- **Backend:** Node.js, Express.js, MongoDB (Atlas), RESTful API, modular middleware.
+- **Frontend:** HTML5, CSS3, Vanilla JS (modular, no frontend framework), responsive/mobile-first.
+- **DevOps:** Environment-based config, production-ready CORS, error handling, and health checks.
+- **PWA:** Service worker, manifest, offline support, and installable app experience.
 
-RESTful API design
+---
 
-DevOps & Hosting:
-
-Deploy-ready for: Render, Railway, Heroku
-
-Environment-based configuration (.env)
-
-Production-grade settings (CORS, rate limiting, security middleware)
-
-🚀 Getting Started
-📦 Local Development
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/playnotnpc.git
-cd playnotnpc
-npm install
-npm run dev
-🌐 Deployment Options
-🔧 Common Environment Variables
-env
-Copy
-Edit
-NODE_ENV=production
-MONGODB_URI=your_mongodb_uri
-JWT_SECRET=your_super_secret
-PORT=5000
-✅ Deploy to Render.com
-Connect GitHub → New Web Service
-
-Build Command: npm install
-
-Start Command: npm start
-
-Set environment variables above
-
-✅ Deploy to Railway.app
-One-click GitHub deployment
-
-Add .env variables in dashboard
-
-Auto-deploy on git push
-
-✅ Deploy to Heroku
-bash
-Copy
-Edit
-heroku create playnotnpc
-heroku config:set NODE_ENV=production
-heroku config:set MONGODB_URI=...
-heroku config:set JWT_SECRET=...
-git push heroku main
-🎯 Core Features (Live & Functional)
-✅ Secure auth system (JWT)
-✅ Activity logging with XP gain
-✅ Level progression (1-100+)
-✅ Dashboard with stats + streaks
-✅ Achievement badges
-✅ Fully mobile-optimized UI
-✅ Modular, scalable codebase
-
-📍 Planned Enhancements
-🗓 Calendar view for history
-📊 Graphs + advanced analytics
-🏆 Friend system & leaderboards
-🎯 Goal setting + habit tracking
-📱 Progressive Web App (PWA) - Install to home screen
-🔔 Push notifications & offline support
-
-🛡 Security & Best Practices
-✅ JWT with env-configurable secret
-
-✅ MongoDB with role-based access
-
-✅ Rate limiting (express-rate-limit)
-
-✅ Input validation (express-validator)
-
-✅ CORS setup for production
-
-✅ 404/500 error handling
-
-🔐 HTTPS auto-enabled (via platform)
-
-📊 Monitoring Tools (Suggested)
-Google Analytics — user behavior
-
-MongoDB Atlas — DB performance
-
-Sentry — real-time error logging
-
-UptimeRobot — basic uptime monitoring
-
-🎨 Customization Guide
-🖌 UI Theme: Edit styles.css
-🏅 Achievements: Customize badge logic
-📈 XP System: Adjust XP formula in /modules/xpManager.js
-🧩 New Activities: Extend /modules/tracker.js
-
-📎 Project Structure Overview
+## Project Structure
 ```
 real-life-xp/
-├── modules/        # Core logic (auth, tracker, XP, storage, PWA)
-├── routes/         # Express routes
-├── utils/          # Reusable utilities
+├── modules/        # Frontend logic (auth, XP, achievements, onboarding, etc.)
+├── routes/         # Express API routes (users, activities, friends, etc.)
+├── models/         # Mongoose models (User, Activity, Friend)
+├── middleware/     # Security, error handling, validation
+├── services/       # Business logic (XP, query optimization)
+├── config/         # Database connection and config
+├── utils/          # Utility functions
+├── public/         # Static assets (HTML, CSS, JS, icons)
+├── sw.js           # Service worker for PWA
 ├── manifest.json   # PWA manifest
-├── sw.js          # Service worker
-├── install.html    # PWA installation guide
-└── server.js       # Entry point
+├── server.js       # Main server entry point
+└── ...
 ```
 
-🚀 **PWA Features**
-- **Install to Home Screen**: One-tap installation on mobile/desktop
-- **Offline Support**: View progress and plan activities without internet
-- **Push Notifications**: XP reminders and achievement notifications
-- **Background Sync**: Activities sync when connection is restored
-- **App-like Experience**: Full-screen mode, no browser UI
+---
 
-🏆 **Friends Challenges System**
-- **Preset Challenge Templates**: Fitness, Study, Productivity, Streak, Variety
-- **Real-time Progress Tracking**: Automatic updates when activities are logged
-- **Social Competition**: Compete with friends for XP rewards
-- **Challenge Invites**: Send and accept challenge invitations
-- **Live Leaderboards**: See who's winning in real-time
-💼 Why This Project Matters
-This isn’t just a to-do list in disguise. PlayNotNPC:
+## Getting Started
+### Local Development
+```bash
+git clone https://github.com/garrettmichae1/playnotnpc.git
+cd playnotnpc
+npm install
+npm start
+```
+- The app will be available at `http://localhost:5000` by default.
+- For mobile testing, access via your LAN IP (e.g., `http://192.168.1.185:5000`).
 
-Demonstrates full-stack capability from UI/UX to deployment
+### API Endpoints
+- `/api/users` — User registration, login, profile
+- `/api/activities` — Log and retrieve activities
+- `/api/achievements` — Achievement progress and unlocks
+- `/api/friends` — Friend management and challenges
+- `/api/performance` — Analytics and stats
+- `/health` — Health check endpoint
 
-Shows attention to security, scalability, and modularity
+---
 
-Is production-ready and deployable in under 10 minutes
+## Environment Variables
+Create a `.env` file in the project root with the following keys:
+```
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+APP_URL=https://playnotnpc.com
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+- **Never commit your real `.env` file to version control.**
 
-Uses clean, maintainable code with no external frontend framework (vanilla JS for control)
+---
 
-EMAIL: garrettiswoodside@gmail.com
+## Deployment
+### Render.com
+- Connect your GitHub repo, set environment variables, and use `npm start` as the start command.
+
+---
+
+## Security
+- **JWT Authentication:** Secure, stateless sessions.
+- **CORS:** Strict in production, permissive for local/mobile testing.
+- **Rate Limiting:** Prevents brute-force and abuse (add express-rate-limit for production).
+- **Input Validation:** All API endpoints validate and sanitize input.
+- **HTTPS:** Enforced in production (via platform or reverse proxy).
+- **Error Handling:** Centralized 404 and global error handlers.
+- **Environment Variables:** All secrets and sensitive config are environment-based.
+
+---
+
+## Customization
+- **UI Theme:** Edit `styles.css` for branding and color schemes.
+- **Achievements:** Modify logic and badges in `modules/achievements.js`.
+- **XP System:** Adjust XP calculation in `modules/xpManager.js`.
+- **Add Activities:** Extend activity types in `modules/tracker.js` and backend routes.
+- **PWA:** Update `manifest.json` and `sw.js` for icons, offline support, and push notifications.
+
+---
+
+
+## Contributing
+1. Fork the repository and create a new branch for your feature or bugfix.
+2. Write clear, maintainable code and add comments where necessary.
+3. Ensure all new code is covered by tests (if applicable).
+4. Submit a pull request with a detailed description of your changes.
+5. All contributions are reviewed for security, maintainability, and clarity.
+
+---
+
+## License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+**Contact:** For questions, support, or business inquiries, email: garrettiswoodside@gmail.com
