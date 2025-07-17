@@ -273,6 +273,10 @@
 
     <script type="module" src="modules/auth.js"></script>
     <script type="module" src="app.js"></script>
+    <script type="module">
+      import { startOnboardingIfNeeded } from './modules/onboarding.js';
+      startOnboardingIfNeeded();
+    </script>
     <script>
     // Scroll-based animation logic
     const observer = new IntersectionObserver((entries) => {
