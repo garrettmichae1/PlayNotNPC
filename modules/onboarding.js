@@ -6,7 +6,7 @@ const ONBOARDING_KEY = 'playnotnpc_onboarding_complete_v1';
 const onboardingSteps = [
   {
     title: 'Welcome to PlayNotNPC!',
-    desc: 'Transform your real life into an epic adventure. Let’s take a quick tour!',
+    desc: 'Transform your real life into an epic adventure. Let’s take a quick, smooth tour of your new dashboard!',
     highlight: null
   },
   {
@@ -18,6 +18,16 @@ const onboardingSteps = [
     title: 'Track Your Progress',
     desc: 'See your recent activities and XP here. Watch your character grow as you log more!',
     highlight: '.entry-list-container'
+  },
+  {
+    title: 'Plan & Organize',
+    desc: 'Use the <b>Planner</b> to set goals, schedule activities, and stay on top of your quests. Tap the calendar icon in the menu!',
+    highlight: '.nav-link[href="planner.html"]'
+  },
+  {
+    title: 'Connect with Friends',
+    desc: 'Add friends, see their progress, and motivate each other! Check out the Friends page from the menu.',
+    highlight: '.nav-link[href="friends.html"]'
   },
   {
     title: 'Unlock Achievements',
