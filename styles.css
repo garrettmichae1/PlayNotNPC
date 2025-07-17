@@ -1970,3 +1970,24 @@ progress::-webkit-progress-value {
 
 /* ===== Fun Confetti/Particles (optional, for future) ===== */
 /* .confetti { ... } */
+.no-activities-message {
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(132,94,247,0.12) 0%, rgba(92,124,250,0.10) 100%);
+  border: 1.5px dashed #845ef7;
+  border-radius: 16px;
+  padding: 2.2rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 2rem auto 2.5rem auto;
+  max-width: 420px;
+  box-shadow: 0 2px 16px #845ef733;
+  opacity: 0.92;
+  letter-spacing: 0.01em;
+  transition: box-shadow 0.2s;
+}
+.no-activities-message span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}

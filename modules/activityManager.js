@@ -160,6 +160,13 @@ export class ActivityManager {
         this.entryList.innerHTML = '';
         console.log('Entry list cleared');
         
+        if (!activities || activities.length === 0) {
+            const msg = document.createElement('li');
+            msg.className = 'no-activities-message';
+            msg.innerHTML = '<span>📝</span> No activities are logged yet.<br>When you add activities, they will appear here!';
+            this.entryList.appendChild(msg);
+            return;
+        }
         // Sort activities by date (newest first)
         const sortedActivities = activities.sort((a, b) => {
             const dateA = new Date(a.createdAt || a.date);
