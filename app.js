@@ -3,6 +3,7 @@ import { ActivityManager } from './modules/activityManager.js';
 import { initializeMobileNavigation } from './modules/mobileNav.js';
 import { initializeMobileOptimizations, testMobileFunctionality } from './modules/mobileOptimizations.js';
 import { pwa } from './modules/pwa.js';
+import { addShareButtonToAchievement } from './modules/share.js';
 
 // --- AUTHENTICATION ---
 // Ensure user is authenticated
@@ -532,6 +533,8 @@ function showAchievementNotification(achievement) {
     
     // Add to page
     document.body.appendChild(notification);
+    // Add share button
+    addShareButtonToAchievement(notification, achievement.title);
     
     // Animate in
     setTimeout(() => {
