@@ -190,12 +190,17 @@
                 <h2>Add Activity</h2>
                 <form id="diary-form">
                     <div class="form-group">
-                        <label for="entry-type">Activity</label>
+                        <label for="entry-type">Activity Type</label>
                         <select id="entry-type" name="entry-type">
                             <option value="WORKOUT">Workout</option>
                             <option value="WORK">Work</option>
                             <option value="STUDY">Study</option>
+                            <option value="custom">Custom Activity</option>
                         </select>
+                    </div>
+                    <div class="form-group" id="custom-activity-group" style="display: none;">
+                        <label for="custom-activity-name">Custom Activity Name</label>
+                        <input type="text" id="custom-activity-name" placeholder="e.g., Meditation, Reading, Cooking, etc.">
                     </div>
                     <div class="form-group">
                         <label for="entry-description">Description</label>

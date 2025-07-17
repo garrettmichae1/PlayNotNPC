@@ -1734,3 +1734,87 @@ progress::-webkit-progress-value {
         border: 1px solid var(--border) !important;
     }
 }
+
+/* ===== Custom Activity Styling ===== */
+#custom-activity-group,
+#custom-plan-group {
+    animation: slideDown 0.3s ease-out;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(132, 94, 247, 0.1) 0%, rgba(92, 124, 250, 0.05) 100%);
+    border: 1px solid rgba(132, 94, 247, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#custom-activity-group::before,
+#custom-plan-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(132, 94, 247, 0.3), transparent);
+}
+
+#custom-activity-group label,
+#custom-plan-group label {
+    color: #c7b1ff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#custom-activity-name,
+#custom-plan-name {
+    background: linear-gradient(135deg, rgba(26, 22, 45, 0.9) 0%, rgba(15, 10, 26, 0.95) 100%);
+    border: 2px solid rgba(132, 94, 247, 0.3);
+    color: #fff;
+    font-weight: 500;
+}
+
+#custom-activity-name:focus,
+#custom-plan-name:focus {
+    border-color: #845ef7;
+    box-shadow: 0 0 15px rgba(132, 94, 247, 0.3);
+    background: linear-gradient(135deg, rgba(51, 45, 78, 0.95) 0%, rgba(36, 32, 58, 0.95) 100%);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 200px;
+    }
+}
+
+/* Mobile optimizations for custom activity inputs */
+@media (max-width: 768px) {
+    #custom-activity-group,
+    #custom-plan-group {
+        margin-top: 0.75rem;
+        padding: 0.75em;
+    }
+    
+    #custom-activity-name,
+    #custom-plan-name {
+        font-size: 16px;
+        padding: 12px;
+        min-height: 44px;
+    }
+    
+    #custom-activity-group label,
+    #custom-plan-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+}

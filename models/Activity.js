@@ -9,7 +9,15 @@ const activitySchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ['WORKOUT', 'WORK', 'STUDY']
+        // Allow both predefined types and custom types
+        validate: {
+            validator: function(v) {
+                // Allow predefined types or custom types (non-empty strings)
+                const predefinedTypes = ['WORKOUT', 'WORK', 'STUDY'];
+                return predefinedTypes.includes(v) || (typeof v === 'string' && v.trim().length > 0);
+            },
+            message: 'Activity type must be either a predefined type (WORKOUT, WORK, STUDY) or a custom activity name'
+        }
     },
     title: {
         type: String,

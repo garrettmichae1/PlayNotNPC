@@ -299,6 +299,25 @@ async function initializeApp() {
         // --- EVENT HANDLERS ---
         if (diaryForm) {
             console.log('Adding form event handler in app.js');
+            
+            // Add custom activity functionality
+            const typeSelect = document.getElementById('entry-type');
+            const customActivityGroup = document.getElementById('custom-activity-group');
+            const customActivityInput = document.getElementById('custom-activity-name');
+            
+            if (typeSelect && customActivityGroup && customActivityInput) {
+                typeSelect.addEventListener('change', () => {
+                    if (typeSelect.value === 'custom') {
+                        customActivityGroup.style.display = 'block';
+                        customActivityInput.required = true;
+                    } else {
+                        customActivityGroup.style.display = 'none';
+                        customActivityInput.required = false;
+                        customActivityInput.value = '';
+                    }
+                });
+            }
+            
             diaryForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 console.log('=== FORM SUBMISSION START ===');
@@ -311,11 +330,13 @@ async function initializeApp() {
                 const titleInput = document.getElementById('entry-description');
                 const amountInput = document.getElementById('entry-value');
                 const typeInput = document.getElementById('entry-type');
+                const customActivityInput = document.getElementById('custom-activity-name');
 
                 console.log('Form elements found:', {
                     titleInput: !!titleInput,
                     amountInput: !!amountInput,
-                    typeInput: !!typeInput
+                    typeInput: !!typeInput,
+                    customActivityInput: !!customActivityInput
                 });
 
                 if (!titleInput || !amountInput || !typeInput) {
@@ -328,6 +349,15 @@ async function initializeApp() {
                     showFormNotification("Please fill in all fields with valid data!", "warning");
                     return;
                 }
+                
+                // Validate custom activity
+                if (typeInput.value === 'custom') {
+                    if (!customActivityInput || !customActivityInput.value.trim()) {
+                        showFormNotification("Please enter a custom activity name!", "warning");
+                        return;
+                    }
+                }
+                
                 // NEW: Duration limit validation
                 if (parseFloat(amountInput.value) > 720) {
                     showDurationLimitNotification();
@@ -336,8 +366,14 @@ async function initializeApp() {
                 }
 
                 try {
+                    // Determine the activity type
+                    let activityType = typeInput.value;
+                    if (typeInput.value === 'custom') {
+                        activityType = customActivityInput.value.trim();
+                    }
+                    
                     const activityData = {
-                        type: typeInput.value,
+                        type: activityType,
                         title: titleInput.value,
                         duration: parseFloat(amountInput.value)
                     };

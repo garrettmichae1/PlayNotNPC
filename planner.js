@@ -173,11 +173,13 @@ function handleAddPlan(event) {
     const titleInput = document.getElementById('plan-title');
     const amountInput = document.getElementById('plan-amount');
     const typeInput = document.getElementById('plan-type');
+    const customPlanInput = document.getElementById('custom-plan-name');
 
     console.log('📱 Form elements found:', {
         titleInput: !!titleInput,
         amountInput: !!amountInput,
-        typeInput: !!typeInput
+        typeInput: !!typeInput,
+        customPlanInput: !!customPlanInput
     });
 
     if (!titleInput || !amountInput || !typeInput) {
@@ -188,7 +190,16 @@ function handleAddPlan(event) {
 
     const title = titleInput.value.trim();
     const amount = parseFloat(amountInput.value);
-    const type = typeInput.value;
+    let type = typeInput.value;
+
+    // Handle custom activity type
+    if (type === 'custom') {
+        if (!customPlanInput || !customPlanInput.value.trim()) {
+            showFormNotification("Please enter a custom activity name!", "warning");
+            return;
+        }
+        type = customPlanInput.value.trim();
+    }
 
     console.log('📱 Form values:', { title, amount, type });
 
@@ -307,6 +318,25 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 
 // --- INITIALIZATION ---
 planForm.style.display = 'none'; // Hide form until a day is selected
+
+// Add custom activity functionality
+const typeSelect = document.getElementById('plan-type');
+const customPlanGroup = document.getElementById('custom-plan-group');
+const customPlanInput = document.getElementById('custom-plan-name');
+
+if (typeSelect && customPlanGroup && customPlanInput) {
+    typeSelect.addEventListener('change', () => {
+        if (typeSelect.value === 'custom') {
+            customPlanGroup.style.display = 'block';
+            customPlanInput.required = true;
+        } else {
+            customPlanGroup.style.display = 'none';
+            customPlanInput.required = false;
+            customPlanInput.value = '';
+        }
+    });
+}
+
 renderCalendar();
 setupMobileFormOptimizations();
 
