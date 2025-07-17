@@ -186,7 +186,7 @@
 
         <main class="main-content">
 
-            <section class="card entry-form-container">
+            <section class="card entry-form-container scroll-animate">
                 <h2>Add Activity</h2>
                 <form id="diary-form">
                     <div class="form-group">
@@ -215,14 +215,14 @@
                 </form>
             </section>
 
-            <section class="entry-list-container">
+            <section class="entry-list-container scroll-animate">
                 <h2>Recent Activities</h2>
                 <ul class="entry-list">
                 </ul>
             </section>
 
             <!-- Character Development Guide -->
-            <section class="card game-objective">
+            <section class="card game-objective scroll-animate">
                 <h2>🎯 Character Development</h2>
                 <div class="objective-content">
                     <div class="objective-item">
@@ -248,22 +248,24 @@
                 </div>
             </section>
 
-            <!-- Debug Info Section -->
-            <section class="debug-info" style="margin-top: 20px; padding: 15px; background: #e8f4fd; border: 2px solid #007bff; border-radius: 8px;">
-                <h3 style="color: #007bff; margin-top: 0;">🔍 Debug Information</h3>
-                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
-                    <strong>To see console logs:</strong> Press F12 → Console tab
-                </p>
-                <div id="debug-info">
-                    <p>Loading debug info...</p>
-                </div>
-            </section>
-
         </main>
     </div>
 
     <script type="module" src="modules/auth.js"></script>
     <script type="module" src="app.js"></script>
-</body>
+    <script>
+    // Scroll-based animation logic
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.15 });
 
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+        observer.observe(el);
+    });
+    </script>
+</body>
 </html>

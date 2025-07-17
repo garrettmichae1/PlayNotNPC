@@ -1897,3 +1897,50 @@ progress::-webkit-progress-value {
         margin-bottom: 0.4rem;
     }
 }
+
+/* ===== Scroll-based Animations ===== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    will-change: opacity, transform;
+}
+.scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1.01);
+    box-shadow: 0 8px 32px rgba(132,94,247,0.10), 0 0 0 2px rgba(132,94,247,0.08);
+    animation: popIn 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes popIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+    80% { transform: translateY(-8px) scale(1.04); }
+    100% { opacity: 1; transform: translateY(0) scale(1.01); }
+}
+
+/* ===== Section Header Micro-interactions ===== */
+.entry-form-container.in-view h2,
+.entry-list-container.in-view h2,
+.game-objective.in-view h2 {
+    animation: headerGlow 1.2s cubic-bezier(0.4,0,0.2,1);
+    text-shadow: 0 0 16px #a445f2, 0 0 32px #fa4299;
+    letter-spacing: 1.5px;
+}
+@keyframes headerGlow {
+    0% { text-shadow: none; letter-spacing: 0.5px; }
+    60% { text-shadow: 0 0 24px #a445f2, 0 0 48px #fa4299; letter-spacing: 2.5px; }
+    100% { text-shadow: 0 0 16px #a445f2, 0 0 32px #fa4299; letter-spacing: 1.5px; }
+}
+
+/* ===== Animate Recent Activities List Items ===== */
+.entry-list.in-view li {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInListItem 0.7s forwards;
+    animation-delay: calc(var(--i, 0) * 0.08s);
+}
+@keyframes fadeInListItem {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Fun Confetti/Particles (optional, for future) ===== */
+/* .confetti { ... } */
