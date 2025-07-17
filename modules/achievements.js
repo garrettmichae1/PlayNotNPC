@@ -1,11 +1,18 @@
+// AchievementManager handles achievement definitions, checks, and progress for users
 class AchievementManager {
     constructor() {
+        // Initialize all achievements by category
         this.achievements = this.initializeAchievements();
     }
 
+    /**
+     * Define and return all achievements grouped by category.
+     * Each achievement has an id, title, description, icon, XP reward, and unlocked status.
+     * @returns {Object} Achievements grouped by category
+     */
     initializeAchievements() {
         return {
-            // Milestone Achievements
+            // Milestone Achievements (level-based)
             milestones: {
                 level5: {
                     id: 'level5',
@@ -48,8 +55,7 @@ class AchievementManager {
                     unlocked: false
                 }
             },
-
-            // Streak Achievements
+            // Streak Achievements (streak-based)
             streaks: {
                 streak3: {
                     id: 'streak3',
@@ -84,8 +90,7 @@ class AchievementManager {
                     unlocked: false
                 }
             },
-
-            // Activity Achievements
+            // Activity Achievements (activity-based)
             activities: {
                 firstWorkout: {
                     id: 'firstWorkout',
@@ -120,8 +125,7 @@ class AchievementManager {
                     unlocked: false
                 }
             },
-
-            // Time-based Achievements
+            // Time-based Achievements (time-based)
             timeBased: {
                 earlyBird: {
                     id: 'earlyBird',
@@ -148,8 +152,7 @@ class AchievementManager {
                     unlocked: false
                 }
             },
-
-            // Special Achievements
+            // Special Achievements (special conditions)
             special: {
                 firstDay: {
                     id: 'firstDay',
@@ -315,10 +318,15 @@ class AchievementManager {
         };
     }
 
-    // Check and award achievements based on user stats
+    /**
+     * Check and award achievements based on user stats and activities.
+     * Returns a list of newly unlocked achievements.
+     * @param {Object} userStats - The user's stats (level, streak, etc.)
+     * @param {Array} activities - List of user activities
+     * @returns {Array} Newly unlocked achievements
+     */
     checkAchievements(userStats, activities) {
         const newAchievements = [];
-        
         // Check milestone achievements
         Object.values(this.achievements.milestones).forEach(achievement => {
             if (!achievement.unlocked && userStats.level >= this.getLevelRequirement(achievement.id)) {
@@ -326,7 +334,6 @@ class AchievementManager {
                 newAchievements.push(achievement);
             }
         });
-
         // Check streak achievements
         Object.values(this.achievements.streaks).forEach(achievement => {
             if (!achievement.unlocked && userStats.streakCount >= this.getStreakRequirement(achievement.id)) {
@@ -334,7 +341,6 @@ class AchievementManager {
                 newAchievements.push(achievement);
             }
         });
-
         // Check activity achievements
         const activityStats = this.calculateActivityStats(activities);
         Object.values(this.achievements.activities).forEach(achievement => {
@@ -343,7 +349,6 @@ class AchievementManager {
                 newAchievements.push(achievement);
             }
         });
-
         // Check time-based achievements
         Object.values(this.achievements.timeBased).forEach(achievement => {
             if (!achievement.unlocked && this.checkTimeBasedAchievement(achievement, activities)) {
@@ -351,7 +356,6 @@ class AchievementManager {
                 newAchievements.push(achievement);
             }
         });
-
         // Check special achievements
         Object.values(this.achievements.special).forEach(achievement => {
             if (!achievement.unlocked && this.checkSpecialAchievement(achievement, activities, userStats)) {
@@ -359,10 +363,14 @@ class AchievementManager {
                 newAchievements.push(achievement);
             }
         });
-
         return newAchievements;
     }
 
+    /**
+     * Get the level required for a milestone achievement.
+     * @param {string} achievementId
+     * @returns {number} Required level
+     */
     getLevelRequirement(achievementId) {
         const levelMap = {
             'level5': 5,
@@ -374,6 +382,11 @@ class AchievementManager {
         return levelMap[achievementId] || 0;
     }
 
+    /**
+     * Get the streak count required for a streak achievement.
+     * @param {string} achievementId
+     * @returns {number} Required streak count
+     */
     getStreakRequirement(achievementId) {
         const streakMap = {
             'streak3': 3,
@@ -384,6 +397,11 @@ class AchievementManager {
         return streakMap[achievementId] || 0;
     }
 
+    /**
+     * Calculate stats from activities for achievement checks.
+     * @param {Array} activities
+     * @returns {Object} Activity stats
+     */
     calculateActivityStats(activities) {
         const stats = {
             workoutCount: 0,
@@ -464,6 +482,12 @@ class AchievementManager {
         return stats;
     }
 
+    /**
+     * Check if an activity-based achievement is unlocked.
+     * @param {Object} achievement
+     * @param {Object} activityStats
+     * @returns {boolean}
+     */
     checkActivityAchievement(achievement, activityStats) {
         switch (achievement.id) {
             case 'firstWorkout':
@@ -480,6 +504,12 @@ class AchievementManager {
         }
     }
 
+    /**
+     * Check if a time-based achievement is unlocked.
+     * @param {Object} achievement
+     * @param {Array} activities
+     * @returns {boolean}
+     */
     checkTimeBasedAchievement(achievement, activities) {
         const activityStats = this.calculateActivityStats(activities);
         
@@ -501,6 +531,13 @@ class AchievementManager {
         }
     }
 
+    /**
+     * Check if a special achievement is unlocked.
+     * @param {Object} achievement
+     * @param {Array} activities
+     * @param {Object} userStats
+     * @returns {boolean}
+     */
     checkSpecialAchievement(achievement, activities, userStats) {
         const activityStats = this.calculateActivityStats(activities);
         
@@ -532,7 +569,10 @@ class AchievementManager {
         }
     }
 
-    // Get all achievements for display
+    /**
+     * Get all achievements as a flat array for display.
+     * @returns {Array} All achievements with category info
+     */
     getAllAchievements() {
         const allAchievements = [];
         
@@ -554,15 +594,32 @@ class AchievementManager {
         });
     }
 
+    /**
+     * Get the display category name for an achievement by id.
+     * @param {string} achievementId
+     * @returns {string} Category name
+     */
     getCategoryName(achievementId) {
         if (achievementId.startsWith('level')) return 'Milestones';
         if (achievementId.startsWith('streak')) return 'Streaks';
-        if (['firstWorkout', 'workoutMaster', 'studyStreak', 'workaholic', 'productivityGuru', 'fitnessEnthusiast', 'knowledgeSeeker'].includes(achievementId)) return 'Activities';
-        if (['earlyBird', 'nightOwl', 'earlyRiser', 'nightShift', 'weekendWarrior', 'weekendConsistency'].includes(achievementId)) return 'Time-based';
+        if ([
+            'firstWorkout', 'workoutMaster', 'studyStreak', 'workaholic',
+            'productivityGuru', 'fitnessEnthusiast', 'knowledgeSeeker'
+        ].includes(achievementId)) return 'Activities';
+        if ([
+            'earlyBird', 'nightOwl', 'earlyRiser', 'nightShift',
+            'weekendWarrior', 'weekendConsistency'
+        ].includes(achievementId)) return 'Time-based';
         return 'Special';
     }
 
-    // Get progress for locked achievements
+    /**
+     * Get progress percentage for a locked achievement.
+     * @param {string} achievementId
+     * @param {Object} userStats
+     * @param {Array} activities
+     * @returns {number} Progress percentage (0-100)
+     */
     getAchievementProgress(achievementId, userStats, activities) {
         const activityStats = this.calculateActivityStats(activities);
         
@@ -618,7 +675,12 @@ class AchievementManager {
         }
     }
 
-    // Helper method to check consecutive days
+    /**
+     * Helper: Check if user has completed required consecutive days.
+     * @param {Array} activities
+     * @param {number} requiredDays
+     * @returns {boolean}
+     */
     checkConsecutiveDays(activities, requiredDays) {
         if (activities.length === 0) return false;
         
@@ -647,7 +709,11 @@ class AchievementManager {
         return maxConsecutive >= requiredDays;
     }
 
-    // Helper method to check momentum (increasing daily activity count)
+    /**
+     * Helper: Check if user has increasing daily activity count for 7 days.
+     * @param {Array} activities
+     * @returns {boolean}
+     */
     checkMomentum(activities) {
         const dailyCounts = {};
         activities.forEach(activity => {
@@ -671,7 +737,11 @@ class AchievementManager {
         return false;
     }
 
-    // Helper method to check balance between categories
+    /**
+     * Helper: Check if user has balanced time between categories.
+     * @param {Object} activityStats
+     * @returns {boolean}
+     */
     checkBalance(activityStats) {
         const { WORKOUT, STUDY, WORK } = activityStats.categoryTimeDistribution;
         const total = WORKOUT + STUDY + WORK;
