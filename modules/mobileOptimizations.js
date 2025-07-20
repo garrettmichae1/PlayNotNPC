@@ -4,7 +4,7 @@ export function initializeMobileOptimizations() {
 
     // Detect mobile device
     const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    console.log('📱 Mobile device detected:', isMobile);
+    console.log('Mobile device detected:', isMobile);
     console.log('Touch points:', navigator.maxTouchPoints);
     console.log('Viewport:', window.innerWidth + 'x' + window.innerHeight);
 
@@ -31,36 +31,36 @@ export function initializeMobileOptimizations() {
         elements.forEach(element => {
             // Add touch event handling
             element.addEventListener('touchstart', function(e) {
-                console.log('📱 Touch event on:', selector, this);
+                console.log(' Touch event on:', selector, this);
                 this.style.transform = 'scale(0.98)';
                 this.style.transition = 'transform 0.1s ease';
             }, { passive: true });
 
             element.addEventListener('touchend', function(e) {
-                console.log('📱 Touch end on:', selector, this);
+                console.log('Touch end on:', selector, this);
                 this.style.transform = 'scale(1)';
             }, { passive: true });
 
             // Add click event as fallback
             element.addEventListener('click', function(e) {
-                console.log('📱 Click event on:', selector, this);
+                console.log('Click event on:', selector, this);
             });
         });
     });
 
-    console.log('🎯 Found interactive elements:', document.querySelectorAll(interactiveSelectors.join(',')).length);
+    console.log('Found interactive elements:', document.querySelectorAll(interactiveSelectors.join(',')).length);
 
     // Enhanced form handling for mobile
     const forms = document.querySelectorAll('form');
-    console.log('📝 Found forms:', forms.length);
+    console.log('Found forms:', forms.length);
     
     forms.forEach((form, index) => {
-        console.log(`📝 Setting up form ${index + 1}:`, form.id || 'unnamed');
+        console.log(`Setting up form ${index + 1}:`, form.id || 'unnamed');
         
         // Add mobile-specific form improvements
         const inputs = form.querySelectorAll('input, select, textarea');
         inputs.forEach((input, inputIndex) => {
-            console.log(`📝 Input ${inputIndex + 1}:`, input.type, input.id || input.name);
+            console.log(`Input ${inputIndex + 1}:`, input.type, input.id || input.name);
             
             // Set font size to 16px to prevent zoom on iOS
             input.style.fontSize = '16px';
@@ -71,7 +71,7 @@ export function initializeMobileOptimizations() {
             
             // Add visual feedback on focus
             input.addEventListener('focus', function() {
-                console.log('📱 Input focused:', this.id || this.name);
+                console.log('Input focused:', this.id || this.name);
                 this.style.borderColor = '#667eea';
                 this.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.2)';
             });
@@ -83,7 +83,7 @@ export function initializeMobileOptimizations() {
             
             // Add touch feedback
             input.addEventListener('touchstart', function() {
-                console.log('📱 Input touched:', this.id || this.name);
+                console.log('Input touched:', this.id || this.name);
                 this.style.backgroundColor = '#f8f9ff';
             }, { passive: true });
             
@@ -94,7 +94,7 @@ export function initializeMobileOptimizations() {
         
         // Enhanced form submission for mobile (visual feedback only)
         form.addEventListener('submit', function(e) {
-            console.log('📱 Form submission started (mobile feedback):', this.id || 'unnamed');
+            console.log('Form submission started (mobile feedback):', this.id || 'unnamed');
             
             // Add visual feedback only - don't prevent default or interfere with main handler
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -128,7 +128,7 @@ export function initializeMobileOptimizations() {
 
     // Enhanced modal handling for mobile
     const modals = document.querySelectorAll('.modal, .popup, .overlay');
-    console.log('🪟 Found modals:', modals.length);
+    console.log('Found modals:', modals.length);
     
     modals.forEach(modal => {
         // Add touch-friendly close buttons
@@ -151,7 +151,7 @@ export function initializeMobileOptimizations() {
 
     // Enhanced chart handling for mobile
     const charts = document.querySelectorAll('canvas, .chart-container');
-    console.log('📊 Found charts:', charts.length);
+    console.log('Found charts:', charts.length);
     
     charts.forEach(chart => {
         // Make charts responsive on mobile
@@ -269,20 +269,20 @@ export function initializeMobileOptimizations() {
         }
     `;
     document.head.appendChild(style);
-    console.log('🎨 Mobile CSS improvements added');
+    console.log('Mobile CSS improvements added');
 
     // Add comprehensive debugging
-    console.log('✅ Mobile optimizations initialized successfully');
-    console.log('📱 Mobile device class added:', document.body.classList.contains('mobile-device'));
-    console.log('🎯 Interactive elements enhanced:', document.querySelectorAll(interactiveSelectors.join(',')).length);
-    console.log('📝 Forms optimized:', forms.length);
-    console.log('🪟 Modals enhanced:', modals.length);
-    console.log('📊 Charts responsive:', charts.length);
+    console.log('Mobile optimizations initialized successfully');
+    console.log(' Mobile device class added:', document.body.classList.contains('mobile-device'));
+    console.log(' Interactive elements enhanced:', document.querySelectorAll(interactiveSelectors.join(',')).length);
+    console.log('Forms optimized:', forms.length);
+    console.log('Modals enhanced:', modals.length);
+    console.log(' Charts responsive:', charts.length);
 }
 
 // Export test function for debugging
 export function testMobileFunctionality() {
-    console.log('🧪 Testing mobile functionality...');
+    console.log('Testing mobile functionality...');
     
     // Test touch detection
     console.log('Touch support:', 'ontouchstart' in window);
