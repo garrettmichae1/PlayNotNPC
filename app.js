@@ -14,7 +14,7 @@ if (!Auth.isAuthenticated()) {
 // --- MOBILE DEBUGGING ---
 // Add mobile debugging information
 function logMobileDebug() {
-    console.log('📱 Mobile Debug Info:');
+    console.log(' Mobile Debug Info:');
     console.log('- Touch Support:', 'ontouchstart' in window);
     console.log('- Max Touch Points:', navigator.maxTouchPoints);
     console.log('- Viewport:', window.innerWidth + 'x' + window.innerHeight);
@@ -25,7 +25,7 @@ function logMobileDebug() {
 
 // Comprehensive mobile test function
 function runComprehensiveMobileTest() {
-    console.log('🧪 Running comprehensive mobile test...');
+    console.log('Running comprehensive mobile test...');
     
     // Test 1: Check all navigation elements
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -33,14 +33,14 @@ function runComprehensiveMobileTest() {
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    console.log('🧪 Test 1 - Navigation Elements:');
+    console.log('Test 1 - Navigation Elements:');
     console.log('- Mobile Menu Toggle:', !!mobileMenuToggle);
     console.log('- Sidebar:', !!sidebar);
     console.log('- Sidebar Overlay:', !!sidebarOverlay);
     console.log('- Nav Links Count:', navLinks.length);
     
     // Test 2: Check nav links have proper href attributes
-    console.log('🧪 Test 2 - Nav Links Href Check:');
+    console.log('Test 2 - Nav Links Href Check:');
     navLinks.forEach((link, index) => {
         const href = link.getAttribute('href');
         const text = link.textContent.trim();
@@ -49,11 +49,11 @@ function runComprehensiveMobileTest() {
     
     // Test 3: Check mobile functionality
     const mobileTest = testMobileFunctionality();
-    console.log('🧪 Test 3 - Mobile Functionality:', mobileTest);
+    console.log(' Test 3 - Mobile Functionality:', mobileTest);
     
     // Test 4: Simulate mobile menu toggle
     if (mobileMenuToggle) {
-        console.log('🧪 Test 4 - Simulating mobile menu toggle...');
+        console.log(' Test 4 - Simulating mobile menu toggle...');
         const clickEvent = new Event('click', { bubbles: true });
         mobileMenuToggle.dispatchEvent(clickEvent);
         
@@ -67,7 +67,7 @@ function runComprehensiveMobileTest() {
     }
     
     // Test 5: Check event listeners
-    console.log('🧪 Test 5 - Event Listeners Check:');
+    console.log(' Test 5 - Event Listeners Check:');
     const events = ['click', 'touchstart', 'touchend'];
     events.forEach(eventType => {
         const listeners = getEventListeners(mobileMenuToggle);
@@ -217,23 +217,23 @@ async function initializeApp() {
         if ('serviceWorker' in navigator) {
             try {
                 const registration = await navigator.serviceWorker.register('/sw.js');
-                console.log('✅ Service Worker registered successfully:', registration);
+                console.log(' Service Worker registered successfully:', registration);
                 
                 // Check for updates
                 registration.addEventListener('updatefound', () => {
                     const newWorker = registration.installing;
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            console.log('🔄 New version available');
+                            console.log(' New version available');
                             // You could show a notification to the user here
                         }
                     });
                 });
             } catch (error) {
-                console.error('❌ Service Worker registration failed:', error);
+                console.error(' Service Worker registration failed:', error);
             }
         } else {
-            console.log('⚠️ Service Worker not supported');
+            console.log(' Service Worker not supported');
         }
         
         // Check authentication
@@ -249,7 +249,7 @@ async function initializeApp() {
         logMobileDebug();
         
         // Initialize mobile functionality
-        console.log('🔧 Initializing mobile functionality...');
+        console.log(' Initializing mobile functionality...');
         initializeMobileNavigation();
         initializeMobileOptimizations();
         
@@ -441,9 +441,9 @@ async function initializeApp() {
 
         // Run comprehensive mobile test after initialization
         setTimeout(() => {
-            console.log('🧪 Running mobile functionality test...');
+            console.log(' Running mobile functionality test...');
             const testResults = runComprehensiveMobileTest();
-            console.log('🧪 Mobile test completed:', testResults);
+            console.log(' Mobile test completed:', testResults);
         }, 1000);
 
     } catch (error) {
