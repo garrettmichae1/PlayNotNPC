@@ -103,7 +103,7 @@ const createDatabaseIndexes = async () => {
     try {
         // Wait for connection to be ready
         if (mongoose.connection.readyState !== 1) {
-            console.log('⏳ Waiting for database connection...');
+            console.log('Waiting for database connection...');
             await new Promise(resolve => {
                 mongoose.connection.once('connected', resolve);
             });
