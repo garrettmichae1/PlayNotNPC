@@ -82,7 +82,7 @@ const userQueries = {
                 .exec();
             
             const duration = queryMetrics.end('getUserStats');
-            console.log(`📊 getUserStats query completed in ${duration}ms`);
+            console.log(`getUserStats query completed in ${duration}ms`);
             
             cacheManager.set(cacheKey, user);
             return user;
@@ -112,7 +112,7 @@ const userQueries = {
             
             const result = { ...user, activityCount };
             const duration = queryMetrics.end('getUserWithActivityCount');
-            console.log(`📊 getUserWithActivityCount query completed in ${duration}ms`);
+            console.log(`getUserWithActivityCount query completed in ${duration}ms`);
             
             cacheManager.set(cacheKey, result, 2 * 60 * 1000); // 2 minutes cache
             return result;
@@ -154,10 +154,10 @@ const activityQueries = {
             }
             if (startDate) {
                 query.createdAt = { $gte: new Date(startDate) };
-                console.log(`📊 Date filtering: ${startDate} -> ${new Date(startDate)}`);
+                console.log(`Date filtering: ${startDate} -> ${new Date(startDate)}`);
             }
             
-            console.log(`📊 Query built:`, query);
+            console.log(`Query built:`, query);
             
             // Build sort object
             const sort = {};
@@ -187,8 +187,8 @@ const activityQueries = {
             };
             
             const duration = queryMetrics.end('getUserActivities');
-            console.log(`📊 getUserActivities query completed in ${duration}ms`);
-            console.log(`📊 Found ${activities.length} activities out of ${total} total`);
+            console.log(`getUserActivities query completed in ${duration}ms`);
+            console.log(`Found ${activities.length} activities out of ${total} total`);
             
             cacheManager.set(cacheKey, result, 1 * 60 * 1000); // 1 minute cache
             return result;
@@ -241,7 +241,7 @@ const activityQueries = {
             };
             
             const duration = queryMetrics.end('getActivityStats');
-            console.log(`📊 getActivityStats query completed in ${duration}ms`);
+            console.log(`getActivityStats query completed in ${duration}ms`);
             
             cacheManager.set(cacheKey, result, 3 * 60 * 1000); // 3 minutes cache
             return result;
@@ -272,7 +272,7 @@ const activityQueries = {
                 .exec();
             
             const duration = queryMetrics.end('getRecentActivities');
-            console.log(`📊 getRecentActivities query completed in ${duration}ms`);
+            console.log(`getRecentActivities query completed in ${duration}ms`);
             
             cacheManager.set(cacheKey, activities, 30 * 1000); // 30 seconds cache
             return activities;
