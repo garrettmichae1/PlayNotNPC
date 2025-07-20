@@ -43,27 +43,27 @@ const dbConfig = {
 // Connection event handlers
 const setupConnectionHandlers = () => {
     mongoose.connection.on('connected', () => {
-        console.log('✅ MongoDB Connected Successfully!');
-        console.log(`📊 Connection Pool Size: ${mongoose.connection.pool.size}`);
+        console.log('MongoDB Connected Successfully!');
+        console.log(`Connection Pool Size: ${mongoose.connection.pool.size}`);
     });
 
     mongoose.connection.on('error', (err) => {
-        console.error('❌ MongoDB Connection Error:', err);
+        console.error('MongoDB Connection Error:', err);
     });
 
     mongoose.connection.on('disconnected', () => {
-        console.log('⚠️  MongoDB Disconnected');
+        console.log('MongoDB Disconnected');
     });
 
     mongoose.connection.on('reconnected', () => {
-        console.log('🔄 MongoDB Reconnected');
+        console.log('MongoDB Reconnected');
     });
 
     // Graceful shutdown
     process.on('SIGINT', async () => {
         try {
             await mongoose.connection.close();
-            console.log('🛑 MongoDB connection closed through app termination');
+            console.log('MongoDB connection closed through app termination');
             process.exit(0);
         } catch (err) {
             console.error('Error during graceful shutdown:', err);
@@ -93,7 +93,7 @@ const connectDB = async () => {
         console.log('Database indexes created successfully');
         
     } catch (error) {
-        console.error('❌ Database connection failed:', error.message);
+        console.error('Database connection failed:', error.message);
         process.exit(1);
     }
 };
@@ -118,10 +118,10 @@ const createDatabaseIndexes = async () => {
         await Activity.collection.createIndex({ category: 1, userId: 1 });
         await Activity.collection.createIndex({ xp: -1, userId: 1 });
         
-        console.log('✅ Database indexes created successfully');
+        console.log('Database indexes created successfully');
         
     } catch (error) {
-        console.error('❌ Error creating database indexes:', error);
+        console.error('Error creating database indexes:', error);
         throw error;
     }
 };
