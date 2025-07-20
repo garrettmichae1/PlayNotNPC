@@ -116,7 +116,7 @@ function renderCalendar() {
 
         // Add touch events for mobile
         dayEl.addEventListener('touchstart', function(e) {
-            console.log('📱 Calendar day touched:', day);
+            console.log('Calendar day touched:', day);
             this.style.transform = 'scale(0.95)';
         }, { passive: true });
 
@@ -163,7 +163,7 @@ function renderDayDetails() {
  */
 function handleAddPlan(event) {
     event.preventDefault();
-    console.log('📱 Plan form submission started');
+    console.log(' Plan form submission started');
     
     if (!selectedDate) {
         showFormNotification("Please select a day from the calendar first!", "warning");
@@ -175,7 +175,7 @@ function handleAddPlan(event) {
     const typeInput = document.getElementById('plan-type');
     const customPlanInput = document.getElementById('custom-plan-name');
 
-    console.log('📱 Form elements found:', {
+    console.log('Form elements found:', {
         titleInput: !!titleInput,
         amountInput: !!amountInput,
         typeInput: !!typeInput,
@@ -183,7 +183,7 @@ function handleAddPlan(event) {
     });
 
     if (!titleInput || !amountInput || !typeInput) {
-        console.error('📱 Form elements not found');
+        console.error('Form elements not found');
         showFormNotification('Form elements not found. Please refresh the page.', 'error');
         return;
     }
@@ -201,7 +201,7 @@ function handleAddPlan(event) {
         type = customPlanInput.value.trim();
     }
 
-    console.log('📱 Form values:', { title, amount, type });
+    console.log('Form values:', { title, amount, type });
 
     if (!title || isNaN(amount) || amount <= 0) {
         showFormNotification("Please fill in all fields with valid values.", "warning");
@@ -216,7 +216,7 @@ function handleAddPlan(event) {
         amount
     };
 
-    console.log('📱 Adding new plan:', newPlan);
+    console.log(' Adding new plan:', newPlan);
 
     plannedActivities.push(newPlan);
     Storage.save('planned_activities', plannedActivities);
@@ -228,7 +228,7 @@ function handleAddPlan(event) {
     renderCalendar();
     renderDayDetails();
     
-    console.log('📱 Plan added successfully');
+    console.log('Plan added successfully');
     
     // Show success feedback
     const submitBtn = planForm.querySelector('button[type="submit"]');
@@ -248,10 +248,10 @@ function handleAddPlan(event) {
 
 // Add mobile-specific form improvements
 function setupMobileFormOptimizations() {
-    console.log('📱 Setting up mobile form optimizations for planner');
+    console.log(' Setting up mobile form optimizations for planner');
     
     if (!planForm) {
-        console.error('📱 Plan form not found');
+        console.error('Plan form not found');
         return;
     }
 
@@ -265,7 +265,7 @@ function setupMobileFormOptimizations() {
         
         // Add visual feedback
         input.addEventListener('focus', function() {
-            console.log('📱 Input focused:', this.id);
+            console.log('Input focused:', this.id);
             this.style.borderColor = '#667eea';
             this.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.2)';
         });
@@ -277,7 +277,7 @@ function setupMobileFormOptimizations() {
         
         // Add touch feedback
         input.addEventListener('touchstart', function() {
-            console.log('📱 Input touched:', this.id);
+            console.log('Input touched:', this.id);
             this.style.backgroundColor = '#f8f9ff';
         }, { passive: true });
         
@@ -340,4 +340,4 @@ if (typeSelect && customPlanGroup && customPlanInput) {
 renderCalendar();
 setupMobileFormOptimizations();
 
-console.log('📱 Planner initialized with mobile optimizations');
+console.log(' Planner initialized with mobile optimizations');
