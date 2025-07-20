@@ -3,7 +3,7 @@
 export class ActivityManager {
     constructor() {
         // Log the start of the constructor for debugging
-        console.log('=== ACTIVITY MANAGER CONSTRUCTOR START ===');
+        console.log('ACTIVITY MANAGER CONSTRUCTOR START');
         console.log('ActivityManager constructor called');
         
         // Cache references to important DOM elements
@@ -28,15 +28,15 @@ export class ActivityManager {
         }
         
         // Event listeners and activity loading are handled externally (see app.js)
-        // console.log('=== ACTIVITY MANAGER CONSTRUCTOR END ===');
+        // console.log('ACTIVITY MANAGER CONSTRUCTOR END');
     }
 
     // Initialize activities after DOM is ready
     async initialize() {
-        console.log('=== ACTIVITY MANAGER INITIALIZE START ===');
+        console.log('ACTIVITY MANAGER INITIALIZE START');
         console.log('Initializing ActivityManager and loading activities...');
         await this.loadActivities();
-        console.log('=== ACTIVITY MANAGER INITIALIZE END ===');
+        console.log('ACTIVITY MANAGER INITIALIZE END');
     }
 
     // (Disabled) Setup event listeners for the form
