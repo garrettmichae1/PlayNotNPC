@@ -7,7 +7,7 @@ export class PWA {
     }
 
     async init() {
-        console.log('🔧 Initializing PWA features...');
+        console.log('Initializing PWA features...');
         
         // Register service worker
         await this.registerServiceWorker();
@@ -21,14 +21,14 @@ export class PWA {
         // Set up offline storage
         this.setupOfflineStorage();
         
-        console.log('✅ PWA features initialized');
+        console.log('PWA features initialized');
     }
 
     async registerServiceWorker() {
         if ('serviceWorker' in navigator) {
             try {
                 this.registration = await navigator.serviceWorker.register('/sw.js');
-                console.log('✅ Service Worker registered:', this.registration);
+                console.log('Service Worker registered:', this.registration);
                 
                 // Handle updates
                 this.registration.addEventListener('updatefound', () => {
@@ -40,7 +40,7 @@ export class PWA {
                     });
                 });
             } catch (error) {
-                console.error('❌ Service Worker registration failed:', error);
+                console.error('Service Worker registration failed:', error);
             }
         }
     }
@@ -60,7 +60,7 @@ export class PWA {
     async requestNotificationPermission() {
         if ('Notification' in window) {
             const permission = await Notification.requestPermission();
-            console.log('🔔 Notification permission:', permission);
+            console.log('Notification permission:', permission);
             return permission === 'granted';
         }
         return false;
@@ -72,12 +72,12 @@ export class PWA {
             const request = indexedDB.open('PlayNotNPC', 1);
             
             request.onerror = () => {
-                console.error('❌ IndexedDB error:', request.error);
+                console.error('IndexedDB error:', request.error);
             };
             
             request.onsuccess = () => {
                 this.db = request.result;
-                console.log('✅ IndexedDB initialized');
+                console.log('IndexedDB initialized');
             };
             
             request.onupgradeneeded = (event) => {
@@ -115,10 +115,10 @@ export class PWA {
                 request.onerror = () => reject(request.error);
             });
             
-            console.log('💾 Activity stored offline:', activityData);
+            console.log('Activity stored offline:', activityData);
             return true;
         } catch (error) {
-            console.error('❌ Failed to store offline activity:', error);
+            console.error(' Failed to store offline activity:', error);
             return false;
         }
     }
@@ -136,7 +136,7 @@ export class PWA {
                 request.onerror = () => reject(request.error);
             });
         } catch (error) {
-            console.error('❌ Failed to get offline activities:', error);
+            console.error('Failed to get offline activities:', error);
             return [];
         }
     }
@@ -147,7 +147,7 @@ export class PWA {
         const offlineActivities = await this.getOfflineActivities();
         if (offlineActivities.length === 0) return;
         
-        console.log('🔄 Syncing offline activities:', offlineActivities.length);
+        console.log('Syncing offline activities:', offlineActivities.length);
         
         for (const activity of offlineActivities) {
             try {
@@ -162,10 +162,10 @@ export class PWA {
                 
                 if (response.ok) {
                     await this.removeOfflineActivity(activity.id);
-                    console.log('✅ Synced activity:', activity.id);
+                    console.log(' Synced activity:', activity.id);
                 }
             } catch (error) {
-                console.error('❌ Failed to sync activity:', error);
+                console.error(' Failed to sync activity:', error);
             }
         }
     }
@@ -183,7 +183,7 @@ export class PWA {
                 request.onerror = () => reject(request.error);
             });
         } catch (error) {
-            console.error('❌ Failed to remove offline activity:', error);
+            console.error(' Failed to remove offline activity:', error);
         }
     }
 
@@ -234,7 +234,7 @@ export class PWA {
     }
 
     onOnline() {
-        console.log('🌐 Back online - syncing data...');
+        console.log('Back online - syncing data...');
         this.syncOfflineActivities();
         
         // Show online notification
@@ -245,7 +245,7 @@ export class PWA {
     }
 
     onOffline() {
-        console.log('📶 Gone offline - storing data locally...');
+        console.log('Gone offline - storing data locally...');
         
         // Show offline notification
         this.sendNotification('Offline Mode', {
