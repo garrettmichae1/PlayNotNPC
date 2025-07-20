@@ -14,7 +14,7 @@ export function initializeMobileNavigation() {
     });
 
     if (!mobileMenuToggle || !sidebar || !sidebarOverlay) {
-        console.warn('⚠️ Mobile navigation elements not found');
+        console.warn('Mobile navigation elements not found');
         console.warn('Missing elements:', {
             mobileMenuToggle: !mobileMenuToggle,
             sidebar: !sidebar,
@@ -28,7 +28,7 @@ export function initializeMobileNavigation() {
         e.preventDefault();
         e.stopPropagation();
         
-        console.log('🍔 Toggle mobile menu clicked');
+        console.log('Toggle mobile menu clicked');
         
         const isOpen = sidebar.classList.contains('mobile-open') || sidebar.classList.contains('active');
         
@@ -43,7 +43,7 @@ export function initializeMobileNavigation() {
 
     // Open mobile menu
     function openMobileMenu() {
-        console.log('📱 Opening mobile menu');
+        console.log('Opening mobile menu');
         sidebar.classList.add('mobile-open');
         sidebar.classList.add('active'); // Support both class names
         sidebarOverlay.classList.add('active');
@@ -61,7 +61,7 @@ export function initializeMobileNavigation() {
             e.stopPropagation();
         }
         
-        console.log('📱 Closing mobile menu');
+        console.log('Closing mobile menu');
         sidebar.classList.remove('mobile-open');
         sidebar.classList.remove('active'); // Support both class names
         sidebarOverlay.classList.remove('active');
@@ -87,13 +87,13 @@ export function initializeMobileNavigation() {
         
         // Add a small delay to ensure menu closes before navigation
         setTimeout(() => {
-            console.log(`🚀 Navigating to: ${href}`);
+            console.log(`Navigating to: ${href}`);
             
             // Use window.location for navigation
             if (href && href !== '#') {
                 window.location.href = href;
             } else {
-                console.warn('⚠️ No valid href found for navigation link');
+                console.warn('No valid href found for navigation link');
             }
         }, 100);
     }
@@ -151,7 +151,7 @@ export function initializeMobileNavigation() {
         // Close menu on window resize (if switching to desktop)
         window.addEventListener('resize', () => {
             if (window.innerWidth > 992) {
-                console.log('🖥️ Window resized to desktop - closing menu');
+                console.log('Window resized to desktop - closing menu');
                 closeMobileMenu();
             }
         });
@@ -172,11 +172,11 @@ export function initializeMobileNavigation() {
     // Add mobile-specific CSS classes
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.body.classList.add('mobile-device');
-        console.log('📱 Mobile device detected');
+        console.log('Mobile device detected');
     }
 
     // Debug: Log final state
-    console.log('✅ Mobile navigation initialized successfully');
+    console.log('Mobile navigation initialized successfully');
     console.log('Current viewport:', window.innerWidth + 'x' + window.innerHeight);
     console.log('Touch support:', 'ontouchstart' in window);
     console.log('Max touch points:', navigator.maxTouchPoints);
