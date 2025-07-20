@@ -155,20 +155,20 @@ const startServer = async () => {
     await connectDB();
     
     app.listen(PORT, '0.0.0.0', () => {
-        console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-        console.log(`📱 Frontend available at: http://localhost:${PORT}`);
-        console.log(`📱 Mobile access: http://192.168.1.185:${PORT}`);
-        console.log(`🔗 API endpoints available at: http://localhost:${PORT}/api/`);
-        console.log(`🔐 Login: http://localhost:${PORT}/login`);
-        console.log(`🧪 Mobile test page: http://localhost:${PORT}/mobile-test-page`);
-        console.log(`📱 Mobile testing tips:`);
-        console.log(`   - Use Chrome/Edge on mobile for best compatibility`);
-        console.log(`   - If you get SSL errors, try: https://192.168.1.185:${PORT}`);
-        console.log(`   - Or disable "HTTPS only" in mobile browser settings`);
-        console.log(`   - Test mobile optimizations at: http://192.168.1.185:${PORT}/mobile-test-page`);
+        console.log(` Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+        console.log(`Frontend available at: http://localhost:${PORT}`);
+        console.log(` Mobile access: http://192.168.1.185:${PORT}`);
+        console.log(` API endpoints available at: http://localhost:${PORT}/api/`);
+        console.log(` Login: http://localhost:${PORT}/login`);
+        console.log(` Mobile test page: http://localhost:${PORT}/mobile-test-page`);
+        console.log(` Mobile testing tips:`);
+        console.log(`  - Use Chrome/Edge on mobile for best compatibility`);
+        console.log(`  - If you get SSL errors, try: https://192.168.1.185:${PORT}`);
+        console.log(`  - Or disable "HTTPS only" in mobile browser settings`);
+        console.log(`  - Test mobile optimizations at: http://192.168.1.185:${PORT}/mobile-test-page`);
         
         if (process.env.NODE_ENV === 'production') {
-            console.log('✅ Production mode enabled');
+            console.log(' Production mode enabled');
         }
     });
 };
