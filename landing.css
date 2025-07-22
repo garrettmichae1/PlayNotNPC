@@ -6,13 +6,13 @@
    :root {
     /* Colors */
     --color-bg-start:  #0e0f11;;           
-    --color-bg-end:   #1a1c1f;;           
+    --color-bg-end:   #000000;;           
     --color-primary-1: #ff3cac;          /* Hot magenta */
     --color-primary-2: #000000;          /* Electric purple */
     --color-accent:    #ffd60a;          /* Vibrant gold */
     --color-text-default: #f3f3f3;       /* Off-white for readability */
     --color-text-muted:   #b3b3b3;       /* Soft gray */
-    --color-card-bg:      rgba(20,20,35,0.85); /* Translucent dark card bg */
+    --color-card-bg:      rgba(0, 0, 0, 0.85); /* Translucent dark card bg */
   
     /* Spacing Scale */
     --space-xs: 8px;
