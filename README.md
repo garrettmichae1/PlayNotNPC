@@ -20,7 +20,7 @@ What Is This?
 PlayNotNPC is a full-stack habit and productivity tracker that turns your real life actions into XP. Whether you're working out, studying, or just staying consistent, you log it, earn XP, and level up. You can unlock achievements, track streaks, and even challenge friends. It’s built to be mobile-friendly, secure, and easy to extend.
 
 Key Features
--  Login/Register — JWT-based auth, no nonsense.
+-  Login/Register — JWT-based auth.
 -  Activity Logging — Track anything: workouts, study time, deep work, etc.
 -  XP System — XP scales with effort, levels up over time, and carries over.
 - Achievements — Milestones, streaks, and special unlocks.
@@ -36,22 +36,6 @@ Tech Stack
 - Frontend: HTML/CSS + Vanilla JS (modular, no frameworks)
 - DevOps: Environment configs, health checks, error handling
 - PWA: Service worker, manifest, installable app
-
-Folder Breakdown
-real-life-xp/
-├── modules/        # Frontend logic (auth, XP, achievements, etc.)
-├── routes/         # Express API routes
-├── models/         # Mongoose schemas
-├── middleware/     # Security, validation, error handling
-├── services/       # XP logic, query optimization
-├── config/         # DB connection and app config
-├── utils/          # Helper functions
-├── public/         # Static files (HTML, CSS, JS)
-├── sw.js           # Service worker
-├── manifest.json   # PWA manifest
-├── server.js       # App entry point
-└── ...
-
 
 
 How to Run It Locally
