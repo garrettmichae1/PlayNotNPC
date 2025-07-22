@@ -292,28 +292,37 @@ h3, .h3 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
 /* -----------------------------------------
    Mobile Responsive - CRITICAL
    -----------------------------------------*/
-@media (max-width: 768px) {
-  :root {
-    --text-xl: 1.75rem;
+   @media (max-width: 768px) {
+    :root {
+      --text-xl: 1.75rem;
+    }
+    .hero {
+      min-height: 80vh;
+    }
+    .hero-title {
+      font-size: 2.5rem; /* Larger and more impactful on mobile */
+    }
+    .hero-subtitle {
+      font-size: var(--text-md);
+    }
+    .cta-btn {
+      padding: var(--space-md) var(--space-lg);
+      font-size: var(--text-md);
+    }
+    .auth-card {
+      margin: var(--space-lg) auto;
+      padding: var(--space-lg);
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+  
+    .auth-form input {
+      width: 100%;
+    }
   }
-  .hero {
-    min-height: 80vh;
-  }
-  .hero-title {
-    font-size: 2.5rem; /* Larger and more impactful on mobile */
-  }
-  .hero-subtitle {
-    font-size: var(--text-md);
-  }
-  .cta-btn {
-    padding: var(--space-md) var(--space-lg);
-    font-size: var(--text-md);
-  }
-  .auth-card {
-    margin: var(--space-lg) auto;
-    padding: var(--space-lg);
-  }
-}
 
 @media (max-width: 480px) {
   .hero-title {
