@@ -1,252 +1,283 @@
-/* landing.css - Sexy AF color palette for PlayNotNPC landing page */
+/* landing_revamped.css - Professional Dark Theme for PlayNotNPC Landing Page */
 
 /* -----------------------------------------
-   CSS Variables for Theme & Spacing
+   CSS Variables & Base Reset
    -----------------------------------------*/
    :root {
-    /* Colors */
-    --color-bg-start:  #0e0f11;;           
-    --color-bg-end:   #000000;;           
-    --color-primary-1: #ff3cac;          /* Hot magenta */
-    --color-primary-2: #000000;          /* Electric purple */
-    --color-accent:    #ffd60a;          /* Vibrant gold */
-    --color-text-default: #f3f3f3;       /* Off-white for readability */
-    --color-text-muted:   #b3b3b3;       /* Soft gray */
-    --color-card-bg:      rgba(0, 0, 0, 0.85); /* Translucent dark card bg */
-  
-    /* Spacing Scale */
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 32px;
-    --space-xl: 48px;
+    /* Color Palette */
+    --color-bg:       #121212;     /* Primary background */
+    --color-surface:  #1e1e1e;     /* Card/form backgrounds */
+    --color-accent:   #e91e63;     /* Primary call-to-action */
+    --color-accent-2: #03a9f4;     /* Secondary accents */
+    --color-text:     #e0e0e0;     /* Main text */
+    --color-text-alt: #aaaaaa;     /* Muted text */
+    --color-border:   #2a2a2a;     /* Subtle border */
+    --color-shadow:   rgba(0, 0, 0, 0.5);
   
     /* Typography */
-    --font-body:    'Poppins', sans-serif;
-    --font-heading: 'Poppins', sans-serif;
-    --text-lg: 1.25rem;
-    --text-base: 1rem;
+    --font-body:    'Inter', sans-serif;
+    --font-heading: 'Inter', sans-serif;
+    --text-xs: 0.75rem;
     --text-sm: 0.875rem;
-    --radius: 14px;
+    --text-md: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 2rem;
+  
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 48px;
+    --radius: 8px;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  
+  img,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: var(--color-accent-2);
+  }
+  
+  button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    background: none;
   }
   
   /* -----------------------------------------
-     Base Styles
+     Container Utilities
      -----------------------------------------*/
-  body.landing {
-    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
-    margin: 0;
-    min-height: 100vh;
-    font-family: var(--font-body);
-    color: var(--color-text-default);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: var(--space-lg);
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-lg);
   }
-  a { color: var(--color-accent); text-decoration: none; }
-  a:hover { color: var(--color-primary-1); }
-  button { font-family: var(--font-body); outline: none; border: none; cursor: pointer; }
+  
+  .section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* -----------------------------------------
+     Headings
+     -----------------------------------------*/
+  h1, .h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+  }
+  h2, .h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+  }
+  h3, .h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
   
   /* -----------------------------------------
      Hero Section
      -----------------------------------------*/
   .hero {
-    max-width: 760px;
+    display: grid;
+    place-items: center;
+    min-height: 80vh;
     text-align: center;
-    margin-bottom: var(--space-xl);
   }
   .hero-title {
-    font-family: var(--font-heading);
-    font-size: 3.2rem;
-    font-weight: 900;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: var(--space-md);
-    background: linear-gradient(90deg, var(--color-primary-1), var(--color-primary-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
   .hero-subtitle {
     font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
-    line-height: 1.6;
+    color: var(--color-text-alt);
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
   }
-  .hero-subtitle p { margin: var(--space-sm) 0; }
   
-  /* CTA Button */
   .cta-btn {
-    background: linear-gradient(90deg, var(--color-primary-1), var(--color-accent));
-    color: #000;
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
     padding: var(--space-sm) var(--space-lg);
-    font-size: var(--text-lg);
-    font-weight: 700;
+    font-size: var(--text-md);
+    font-weight: 600;
     border-radius: var(--radius);
-    box-shadow: 0 6px 20px rgba(255,214,10,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   .cta-btn:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(255,214,10,0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--color-shadow);
   }
   
   /* -----------------------------------------
-     Social Proof Section
+     Cards & Forms
      -----------------------------------------*/
-  .social-proof {
-    max-width: 460px;
-    background: var(--color-card-bg);
+  .card {
+    background: var(--color-surface);
     border-radius: var(--radius);
-    box-shadow: 0 4px 28px rgba(86,43,255,0.2);
-    padding: var(--space-md);
-    text-align: center;
-    margin-bottom: var(--space-xl);
-  }
-  .social-proof img { width: 100%; border-radius: var(--radius); margin-bottom: var(--space-sm); }
-  .social-proof-caption { font-size: var(--text-base); color: var(--color-text-default); }
-  
-  /* -----------------------------------------
-     Testimonials
-     -----------------------------------------*/
-  .testimonials { max-width: 620px; margin-bottom: var(--space-xl); }
-  .testimonial {
-    background: var(--color-card-bg);
-    border-radius: var(--radius);
-    padding: var(--space-md);
-    margin-bottom: var(--space-md);
-    box-shadow: 0 3px 18px rgba(255,60,172,0.1);
-    color: var(--color-text-default);
-    font-size: var(--text-base);
-    line-height: 1.5;
-  }
-  .testimonial-author {
-    display: block;
-    margin-top: var(--space-xs);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    font-style: italic;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    padding: var(--space-lg);
   }
   
-  /* -----------------------------------------
-     Auth Card & Form
-     -----------------------------------------*/
   .auth-card {
-    max-width: 460px;
-    width: 100%;
-    background: var(--color-card-bg);
-    border-radius: var(--radius);
-    box-shadow: 0 5px 36px rgba(86,43,255,0.2);
-    padding: var(--space-xl) var(--space-lg) var(--space-lg);
-    margin-bottom: var(--space-xl);
+    max-width: 400px;
+    margin: 0 auto;
   }
-  .auth-tabs { display: flex; border-bottom: 2px solid rgba(255,255,255,0.1); }
+  
+  .auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-md);
+  }
   .auth-tab {
     flex: 1;
     padding: var(--space-sm) 0;
     text-align: center;
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-text-muted);
+    font-weight: 500;
+    color: var(--color-text-alt);
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.2s;
   }
-  .auth-tab.active { color: var(--color-primary-1); border-bottom: 3px solid var(--color-primary-1); }
-  .auth-form { display: flex; flex-direction: column; gap: var(--space-sm); }
-  .auth-form label { font-size: var(--text-sm); color: var(--color-text-muted); }
+  .auth-tab.active {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+  }
+  .auth-form label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-alt);
+  }
   .auth-form input {
+    width: 100%;
     padding: var(--space-sm);
+    margin-bottom: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    border: 2px solid var(--color-primary-2);
-    background: var(--color-bg-start);
-    color: var(--color-text-default);
-    font-size: var(--text-base);
-    transition: border 0.3s;
+    color: var(--color-text);
+    font-size: var(--text-md);
+    transition: border-color 0.2s;
   }
-  .auth-form input:focus { border-color: var(--color-primary-1); outline: none; }
-  .auth-form .auth-btn {
-    margin-top: var(--space-sm);
-    background: linear-gradient(90deg, var(--color-primary-2), var(--color-accent));
-    color: #000;
+  .auth-form input:focus {
+    outline: none;
+    border-color: var(--color-accent-2);
+  }
+  .auth-btn {
+    width: 100%;
     padding: var(--space-sm);
-    font-size: var(--text-base);
-    font-weight: 700;
+    background: var(--color-accent-2);
+    color: #fff;
+    font-weight: 600;
     border-radius: var(--radius);
-    transition: transform 0.3s;
+    transition: background 0.2s;
   }
-  .auth-form .auth-btn:hover { transform: translateY(-2px) scale(1.02); }
+  .auth-btn:hover {
+    background: var(--color-accent);
+  }
   
   /* -----------------------------------------
-     Donation Section
+     Sections: Social Proof, Testimonials
      -----------------------------------------*/
-  .donation-section { display: flex; justify-content: center; margin-bottom: var(--space-xl); }
-  .donation-content {
-    background: var(--color-bg-end);
-    border-radius: var(--radius);
-    box-shadow: 0 5px 32px rgba(255,60,172,0.15);
-    padding: var(--space-lg);
-    max-width: 400px;
-    text-align: center;
+  .social-proof,
+  .testimonial,
+  .value-prop {
+    margin-bottom: var(--space-lg);
   }
-  .donation-content h2 { font-size: 1.6rem; margin-bottom: var(--space-sm); color: var(--color-primary-2); }
-  .donation-content p { font-size: var(--text-base); margin-bottom: var(--space-md); }
-  .donate-btn {
-    background: linear-gradient(90deg, var(--color-primary-1), var(--color-accent));
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--text-base);
-    font-weight: 700;
+  .social-proof img {
     border-radius: var(--radius);
-    color: #000;
-    transition: transform 0.3s;
   }
-  .donate-btn:hover { transform: translateY(-2px) scale(1.02); }
+  .testimonial {
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-md);
+  }
+  .testimonial-author {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-alt);
+    font-style: italic;
+  }
   
   /* -----------------------------------------
      Value Proposition
      -----------------------------------------*/
-  .value-prop-section {
-    max-width: 540px;
-    background: var(--color-card-bg);
-    border-radius: var(--radius);
-    box-shadow: 0 3px 20px rgba(86,43,255,0.12);
-    padding: var(--space-lg);
-    margin-bottom: var(--space-xl);
+  .value-prop-list {
+    list-style: none;
+    padding: 0;
   }
-  .value-prop-section h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: var(--space-md);
-    color: var(--color-primary-1);
-  }
-  .value-list { list-style: none; padding: 0; margin: 0; }
-  .value-list li {
+  .value-prop-list li {
     position: relative;
     padding-left: var(--space-lg);
     margin-bottom: var(--space-sm);
-    font-size: var(--text-base);
-    line-height: 1.6;
   }
-  .value-list li:before {
-    content: '\2605';
+  .value-prop-list li::before {
+    content: '\2022';
     position: absolute;
     left: 0;
     color: var(--color-accent);
-    font-size: 1.3rem;
-    top: 0;
+    font-size: 1.2rem;
+    line-height: 1;
   }
-  .value-cta { text-align: center; margin-top: var(--space-md); font-size: var(--text-lg); color: var(--color-accent); font-weight: 700; }
+  
+  /* -----------------------------------------
+     Footer
+     -----------------------------------------*/
+  .footer {
+    padding: var(--space-md) 0;
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-alt);
+  }
   
   /* -----------------------------------------
      Responsive
      -----------------------------------------*/
-  @media (max-width: 600px) {
-    :root { --space-lg: 24px; --space-xl: 32px; }
-    .hero-title { font-size: 2.2rem; }
-    .auth-card { padding: var(--space-lg) var(--space-sm); }
-    .donation-content { padding: var(--space-md); }
-    .value-prop-section { padding: var(--space-md); }
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: var(--text-md);
+    }
   }
-  .small-text {
-    font-size: var(--text-sm);
-  }
-  
   
