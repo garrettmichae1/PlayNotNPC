@@ -1,144 +1,108 @@
-# PlayNotNPC — Real-Life XP Gamified Tracker
+PlayNotNPC — Real-Life XP Tracker
+Level up your life. Track habits, earn XP, and make progress feel like a game.
+Fully functional planner/calendar, diary, level/achievement system, and social features like adding friends.
+Decently documented easy to extend.
 
-**Level up your life. Track, analyze, and gamify your real-world achievements.**
+Table of Contents
+- What Is This?
+- Key Features
+- Tech Stack
+- Folder Breakdown
+- How to Run It Locally
+- Environment Setup
+- Deploying It
+- Security Stuff
+- Tweak It Your Way
+- Contributing
+- License
 
----
+What Is This?
+PlayNotNPC is a full-stack habit and productivity tracker that turns your real life actions into XP. Whether you're working out, studying, or just staying consistent, you log it, earn XP, and level up. You can unlock achievements, track streaks, and even challenge friends. It’s built to be mobile-friendly, secure, and easy to extend.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
-- [Security](#security)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
+Key Features
+-  Login/Register — JWT-based auth, no nonsense.
+-  Activity Logging — Track anything: workouts, study time, deep work, etc.
+-  XP System — XP scales with effort, levels up over time, and carries over.
+- Achievements — Milestones, streaks, and special unlocks.
+-  Dashboard — Stats, streaks, and progress analytics.
+-  Friends & Challenges — Add friends, compete, and climb leaderboards.
+-  Mobile-First — Responsive UI, PWA support, works offline.
+-  Stripe Tips — Optional tipping to support dev work.
+-  Security — CORS, rate limiting, input validation, secure headers.
+-  Modular Codebase — Easy to maintain and extend.
 
----
+Tech Stack
+- Backend: Node.js + Express + MongoDB (Atlas)
+- Frontend: HTML/CSS + Vanilla JS (modular, no frameworks)
+- DevOps: Environment configs, health checks, error handling
+- PWA: Service worker, manifest, installable app
 
-## Overview
-PlayNotNPC is a full-stack productivity and habit-tracking platform that transforms your daily activities into a gamified experience. Users log real-life activities, earn XP, level up, unlock achievements, and compete with friends—all within a secure, scalable, and mobile-optimized environment.
-
----
-
-## Features
-- **User Authentication:** Secure JWT-based registration and login.
-- **Activity Logging:** Track workouts, study sessions, work, and more.
-- **XP & Level System:** Dynamic XP calculation, multi-level progression, and XP carryover.
-- **Achievements:** Unlock badges for milestones, streaks, and special actions.
-- **Dashboard:** Real-time stats, streaks, and analytics.
-- **Friends & Challenges:** Add friends, compete in challenges, and view leaderboards.
-- **Mobile-First Design:** Responsive UI, PWA support, and offline capabilities.
-- **Stripe Integration:** Secure tipping for developer support.
-- **Robust Security:** CORS, rate limiting, input validation, and secure headers.
-- **Extensible & Maintainable:** Modular codebase, clear documentation, and scalable architecture.
-
----
-
-## Architecture
-- **Backend:** Node.js, Express.js, MongoDB (Atlas), RESTful API, modular middleware.
-- **Frontend:** HTML5, CSS3, Vanilla JS (modular, no frontend framework), responsive/mobile-first.
-- **DevOps:** Environment-based config, production-ready CORS, error handling, and health checks.
-- **PWA:** Service worker, manifest, offline support, and installable app experience.
-
----
-
-## Project Structure
-```
+Folder Breakdown
 real-life-xp/
-├── modules/        # Frontend logic (auth, XP, achievements, onboarding, etc.)
-├── routes/         # Express API routes (users, activities, friends, etc.)
-├── models/         # Mongoose models (User, Activity, Friend)
-├── middleware/     # Security, error handling, validation
-├── services/       # Business logic (XP, query optimization)
-├── config/         # Database connection and config
-├── utils/          # Utility functions
-├── public/         # Static assets (HTML, CSS, JS, icons)
-├── sw.js           # Service worker for PWA
+├── modules/        # Frontend logic (auth, XP, achievements, etc.)
+├── routes/         # Express API routes
+├── models/         # Mongoose schemas
+├── middleware/     # Security, validation, error handling
+├── services/       # XP logic, query optimization
+├── config/         # DB connection and app config
+├── utils/          # Helper functions
+├── public/         # Static files (HTML, CSS, JS)
+├── sw.js           # Service worker
 ├── manifest.json   # PWA manifest
-├── server.js       # Main server entry point
+├── server.js       # App entry point
 └── ...
-```
 
----
 
-## Getting Started
-### Local Development
-```bash
+
+How to Run It Locally
 git clone https://github.com/garrettmichae1/playnotnpc.git
 cd playnotnpc
 npm install
 npm start
-```
-- The app will be available at `http://localhost:5000` by default.
-- For mobile testing, access via your LAN IP (e.g., `http://192.168.1.185:5000`).
 
-### API Endpoints
-- `/api/users` — User registration, login, profile
-- `/api/activities` — Log and retrieve activities
-- `/api/achievements` — Achievement progress and unlocks
-- `/api/friends` — Friend management and challenges
-- `/api/performance` — Analytics and stats
-- `/health` — Health check endpoint
 
----
+- App runs at http://localhost:5000
+- For mobile testing, use your LAN IP (e.g., http://192.168.x.x:5000)
 
-## Environment Variables
-Create a `.env` file in the project root with the following keys:
-```
+Environment Setup
+Create a .env file in the root with:
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 APP_URL=https://playnotnpc.com
 STRIPE_SECRET_KEY=your_stripe_secret_key
-```
-- **Never commit your real `.env` file to version control.**
 
----
+Deploying It
+I used Render.com
+- Hook up your GitHub repo
+- Add your env vars
+- Use npm start as the start command
 
-## Deployment
-### Render.com
-- Connect your GitHub repo, set environment variables, and use `npm start` as the start command.
+Security Stuff
+- JWT for auth
+- CORS locked down in production
+- Rate limiting (add express-rate-limit)
+- Input validation on all endpoints
+- HTTPS enforced (via platform or proxy)
+- Centralized error handling
+- Secrets stored in env vars
 
----
+Tweak It Your Way
+-  Theme: Edit styles.css for colors and branding
+-  Achievements: Customize logic in modules/achievements.js
+-  XP System: Adjust XP rules in modules/xpManager.js
+-  New Activities: Add types in modules/tracker.js and backend routes
+-  PWA: Update manifest.json and sw.js for icons and offline behavior
 
-## Security
-- **JWT Authentication:** Secure, stateless sessions.
-- **CORS:** Strict in production, permissive for local/mobile testing.
-- **Rate Limiting:** Prevents brute-force and abuse (add express-rate-limit for production).
-- **Input Validation:** All API endpoints validate and sanitize input.
-- **HTTPS:** Enforced in production (via platform or reverse proxy).
-- **Error Handling:** Centralized 404 and global error handlers.
-- **Environment Variables:** All secrets and sensitive config are environment-based.
+Contributing
+If you want to help out:
+- Fork the repo and make a new branch
+- Keep your code clean and commented
+- Add tests if needed
+- Submit a pull request with a clear description
 
----
+License
+MIT. Do what you want, just don’t be shady.
 
-## Customization
-- **UI Theme:** Edit `styles.css` for branding and color schemes.
-- **Achievements:** Modify logic and badges in `modules/achievements.js`.
-- **XP System:** Adjust XP calculation in `modules/xpManager.js`.
-- **Add Activities:** Extend activity types in `modules/tracker.js` and backend routes.
-- **PWA:** Update `manifest.json` and `sw.js` for icons, offline support, and push notifications.
-
----
-
-
-## Contributing
-1. Fork the repository and create a new branch for your feature or bugfix.
-2. Write clear, maintainable code and add comments where necessary.
-3. Ensure all new code is covered by tests (if applicable).
-4. Submit a pull request with a detailed description of your changes.
-5. All contributions are reviewed for security, maintainability, and clarity.
-
----
-
-## License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-**Contact:** For questions, support, or business inquiries, email: garrettiswoodside@gmail.com
+Contact: Questions, ideas, or business stuff = garrettiswoodside@gmail.com
