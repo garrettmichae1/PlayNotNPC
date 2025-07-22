@@ -194,37 +194,33 @@ body.landing {
   color: #22c55e;
 }
 
-/* Donation Popup Modal */
-.donation-modal-backdrop {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(20, 16, 32, 0.75);
-  z-index: 1000;
+/* Donation Section (Static) */
+.donation-section {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin: 36px 0 0 0;
 }
-.donation-modal {
+.donation-content {
   background: #232526;
   border-radius: 18px;
   box-shadow: 0 8px 40px rgba(164, 69, 242, 0.18);
-  padding: 36px 32px 28px 32px;
+  padding: 32px 28px 24px 28px;
   max-width: 380px;
   width: 100%;
   text-align: center;
-  position: relative;
 }
-.donation-modal h2 {
+.donation-content h2 {
   font-size: 1.5rem;
   margin-bottom: 12px;
   color: #a445f2;
 }
-.donation-modal p {
+.donation-content p {
   color: #f5f5f7;
   font-size: 1.08rem;
   margin-bottom: 18px;
 }
-.donation-modal .donate-btn {
+.donate-btn {
   background: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
   color: #fff;
   border: none;
@@ -236,19 +232,9 @@ body.landing {
   margin-right: 10px;
   transition: background 0.2s, transform 0.2s;
 }
-.donation-modal .donate-btn:hover {
+.donate-btn:hover {
   background: linear-gradient(90deg, #ffb86c, #fa4299, #a445f2);
   transform: translateY(-2px) scale(1.03);
-}
-.donation-modal .close-btn {
-  background: none;
-  color: #a1a1aa;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 18px;
 }
 
   /* Responsive Design */

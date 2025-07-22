@@ -95,28 +95,4 @@ registerForm.addEventListener('submit', async (e) => {
     message.textContent = err.message || 'Registration failed.';
     message.className = 'auth-message';
   }
-});
-
-      // Donation Popup Modal
-function showDonationModal() {
-  if (localStorage.getItem('donationModalDismissed')) return;
-  const backdrop = document.createElement('div');
-  backdrop.className = 'donation-modal-backdrop';
-  backdrop.innerHTML = `
-    <div class="donation-modal">
-      <button class="close-btn" id="close-donation-modal" title="Close">&times;</button>
-      <h2>Support PlayNotNPC</h2>
-      <p>This project costs $7/month to keep alive. If you love it, please consider a small donation to help cover server costs and keep the community thriving!</p>
-      <button class="donate-btn" onclick="window.open('https://www.buymeacoffee.com/', '_blank')">Donate</button>
-    </div>
-  `;
-  document.body.appendChild(backdrop);
-  document.getElementById('close-donation-modal').onclick = () => {
-    localStorage.setItem('donationModalDismissed', '1');
-    backdrop.remove();
-  };
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(showDonationModal, 1800);
 }); 
