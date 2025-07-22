@@ -1,291 +1,248 @@
-/* landing.css - Modular styles for PlayNotNPC landing page
-   Purpose: High-conversion, modern landing page with login/registration, social proof, and donation popup
-*/
+/* landing.css - Sexy AF color palette for PlayNotNPC landing page */
 
-/* General Layout */
-body.landing {
-  background: linear-gradient(135deg, #18181b 0%, #232526 100%);
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  color: #f5f5f7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-/* Hero Section */
-.hero {
-  width: 100%;
-  max-width: 700px;
-  margin: 48px auto 24px auto;
-  text-align: center;
-}
-.hero-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 12px;
-}
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: #a1a1aa;
-  margin-bottom: 24px;
-}
-.cta-btn {
-  background: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 16px 36px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 12px;
-  box-shadow: 0 4px 24px rgba(164, 69, 242, 0.15);
-  transition: background 0.2s, transform 0.2s;
-}
-.cta-btn:hover {
-  background: linear-gradient(90deg, #ffb86c, #fa4299, #a445f2);
-  transform: translateY(-2px) scale(1.03);
-}
-
-
-.social-proof {
-  margin: 32px auto 0 auto;
-  max-width: 420px;
-  background: rgba(30, 20, 50, 0.85);
-  border-radius: 18px;
-  box-shadow: 0 2px 18px rgba(142,45,226,0.10);
-  padding: 24px 18px 18px 18px;
-  text-align: center;
-}
-.social-proof img {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 12px rgba(164, 69, 242, 0.13);
-}
-.social-proof-caption {
-  color: #f5f5f7;
-  font-size: 1.05rem;
-  margin-bottom: 0;
-}
-
-/* Testimonials Section */
-.testimonials {
-  margin: 36px auto 0 auto;
-  max-width: 600px;
-  text-align: center;
-}
-.testimonial {
-  background: rgba(24,24,27,0.85);
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-bottom: 18px;
-  color: #fff;
-  font-size: 1.08rem;
-  box-shadow: 0 2px 10px rgba(164, 69, 242, 0.08);
-}
-.testimonial-author {
-  margin-top: 8px;
-  font-size: 0.98rem;
-  color: #a1a1aa;
-  font-style: italic;
-}
-
-
-.auth-card {
-  background: rgba(24,24,27,0.97);
-  border-radius: 20px;
-  box-shadow: 0 4px 32px rgba(164, 69, 242, 0.13);
-  padding: 36px 32px 28px 32px;
-  max-width: 420px;
-  width: 100%;
-  margin: 36px auto 0 auto;
-  position: relative;
-  z-index: 2;
-}
-.auth-tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-.auth-tab {
-  flex: 1;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #a1a1aa;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-}
-.auth-tab.active {
-  color: #a445f2;
-  border-bottom: 3px solid #a445f2;
-}
-
-/* Auth Form */
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.auth-form label {
-  font-size: 0.98rem;
-  color: #a1a1aa;
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-.auth-form input {
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1.5px solid #a445f2;
-  background: #18181b;
-  color: #fff;
-  font-size: 1rem;
-  transition: border 0.2s;
-}
-.auth-form input:focus {
-  border: 1.5px solid #fa4299;
-  outline: none;
-}
-.auth-form .form-hint {
-  font-size: 0.92rem;
-  color: #fa4299;
-  margin-top: -10px;
-  margin-bottom: 6px;
-  display: none;
-}
-.auth-form .form-hint.active {
-  display: block;
-}
-.auth-form .auth-btn {
-  background: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background 0.2s, transform 0.2s;
-}
-.auth-form .auth-btn:hover {
-  background: linear-gradient(90deg, #ffb86c, #fa4299, #a445f2);
-  transform: translateY(-2px) scale(1.03);
-}
-.auth-form .auth-message {
-  margin-top: 12px;
-  font-size: 0.98rem;
-  color: #fa4299;
-  min-height: 24px;
-}
-.auth-form .auth-message.success {
-  color: #22c55e;
-}
-
-/* Donation Section (Static) */
-.donation-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 36px 0 0 0;
-}
-.donation-content {
-  background: #232526;
-  border-radius: 18px;
-  box-shadow: 0 8px 40px rgba(164, 69, 242, 0.18);
-  padding: 32px 28px 24px 28px;
-  max-width: 380px;
-  width: 100%;
-  text-align: center;
-}
-.donation-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-  color: #a445f2;
-}
-.donation-content p {
-  color: #f5f5f7;
-  font-size: 1.08rem;
-  margin-bottom: 18px;
-}
-.donate-btn {
-  background: linear-gradient(90deg, #a445f2, #fa4299, #ffb86c);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background 0.2s, transform 0.2s;
-}
-.donate-btn:hover {
-  background: linear-gradient(90deg, #ffb86c, #fa4299, #a445f2);
-  transform: translateY(-2px) scale(1.03);
-}
-
-/* Value Proposition Section */
-.value-prop-section {
-  margin: 36px auto 0 auto;
-  max-width: 520px;
-  background: rgba(30, 20, 50, 0.92);
-  border-radius: 18px;
-  box-shadow: 0 2px 18px rgba(142,45,226,0.10);
-  padding: 32px 28px 24px 28px;
-  text-align: left;
-}
-.value-prop-section h2 {
-  color: #a445f2;
-  font-size: 1.7rem;
-  margin-bottom: 18px;
-  text-align: center;
-}
-.value-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 18px 0;
-}
-.value-list li {
-  margin-bottom: 16px;
-  font-size: 1.13rem;
-  color: #f5f5f7;
-  line-height: 1.6;
-  padding-left: 0.5em;
-  position: relative;
-}
-.value-list li:before {
-  content: '★';
-  color: #fa4299;
-  font-size: 1.1em;
-  margin-right: 10px;
-  position: absolute;
-  left: -1.2em;
-  top: 0.1em;
-}
-.value-cta {
-  margin-top: 18px;
-  font-size: 1.15rem;
-  color: #ffb86c;
-  text-align: center;
-  font-weight: 600;
-}
-
-  /* Responsive Design */
-@media (max-width: 600px) {
-  .hero-title { font-size: 2rem; }
-  .auth-card { padding: 24px 8px; }
-  .donation-modal { padding: 18px 6px; }
-} 
+/* -----------------------------------------
+   CSS Variables for Theme & Spacing
+   -----------------------------------------*/
+   :root {
+    /* Colors */
+    --color-bg-start: #0d0c1d;           /* Deep midnight blue */
+    --color-bg-end:   #1b1a2e;           /* Navy fade */
+    --color-primary-1: #ff3cac;          /* Hot magenta */
+    --color-primary-2: #562bff;          /* Electric purple */
+    --color-accent:    #ffd60a;          /* Vibrant gold */
+    --color-text-default: #f3f3f3;       /* Off-white for readability */
+    --color-text-muted:   #b3b3b3;       /* Soft gray */
+    --color-card-bg:      rgba(20,20,35,0.85); /* Translucent dark card bg */
+  
+    /* Spacing Scale */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+  
+    /* Typography */
+    --font-body:    'Poppins', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --text-lg: 1.25rem;
+    --text-base: 1rem;
+    --text-sm: 0.875rem;
+    --radius: 14px;
+  }
+  
+  /* -----------------------------------------
+     Base Styles
+     -----------------------------------------*/
+  body.landing {
+    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: var(--color-text-default);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--space-lg);
+  }
+  a { color: var(--color-accent); text-decoration: none; }
+  a:hover { color: var(--color-primary-1); }
+  button { font-family: var(--font-body); outline: none; border: none; cursor: pointer; }
+  
+  /* -----------------------------------------
+     Hero Section
+     -----------------------------------------*/
+  .hero {
+    max-width: 760px;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(90deg, var(--color-primary-1), var(--color-primary-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+  .hero-subtitle p { margin: var(--space-sm) 0; }
+  
+  /* CTA Button */
+  .cta-btn {
+    background: linear-gradient(90deg, var(--color-primary-1), var(--color-accent));
+    color: #000;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(255,214,10,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(255,214,10,0.5);
+  }
+  
+  /* -----------------------------------------
+     Social Proof Section
+     -----------------------------------------*/
+  .social-proof {
+    max-width: 460px;
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 28px rgba(86,43,255,0.2);
+    padding: var(--space-md);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .social-proof img { width: 100%; border-radius: var(--radius); margin-bottom: var(--space-sm); }
+  .social-proof-caption { font-size: var(--text-base); color: var(--color-text-default); }
+  
+  /* -----------------------------------------
+     Testimonials
+     -----------------------------------------*/
+  .testimonials { max-width: 620px; margin-bottom: var(--space-xl); }
+  .testimonial {
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    box-shadow: 0 3px 18px rgba(255,60,172,0.1);
+    color: var(--color-text-default);
+    font-size: var(--text-base);
+    line-height: 1.5;
+  }
+  .testimonial-author {
+    display: block;
+    margin-top: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  /* -----------------------------------------
+     Auth Card & Form
+     -----------------------------------------*/
+  .auth-card {
+    max-width: 460px;
+    width: 100%;
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 5px 36px rgba(86,43,255,0.2);
+    padding: var(--space-xl) var(--space-lg) var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+  .auth-tabs { display: flex; border-bottom: 2px solid rgba(255,255,255,0.1); }
+  .auth-tab {
+    flex: 1;
+    padding: var(--space-sm) 0;
+    text-align: center;
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .auth-tab.active { color: var(--color-primary-1); border-bottom: 3px solid var(--color-primary-1); }
+  .auth-form { display: flex; flex-direction: column; gap: var(--space-sm); }
+  .auth-form label { font-size: var(--text-sm); color: var(--color-text-muted); }
+  .auth-form input {
+    padding: var(--space-sm);
+    border-radius: var(--radius);
+    border: 2px solid var(--color-primary-2);
+    background: var(--color-bg-start);
+    color: var(--color-text-default);
+    font-size: var(--text-base);
+    transition: border 0.3s;
+  }
+  .auth-form input:focus { border-color: var(--color-primary-1); outline: none; }
+  .auth-form .auth-btn {
+    margin-top: var(--space-sm);
+    background: linear-gradient(90deg, var(--color-primary-2), var(--color-accent));
+    color: #000;
+    padding: var(--space-sm);
+    font-size: var(--text-base);
+    font-weight: 700;
+    border-radius: var(--radius);
+    transition: transform 0.3s;
+  }
+  .auth-form .auth-btn:hover { transform: translateY(-2px) scale(1.02); }
+  
+  /* -----------------------------------------
+     Donation Section
+     -----------------------------------------*/
+  .donation-section { display: flex; justify-content: center; margin-bottom: var(--space-xl); }
+  .donation-content {
+    background: var(--color-bg-end);
+    border-radius: var(--radius);
+    box-shadow: 0 5px 32px rgba(255,60,172,0.15);
+    padding: var(--space-lg);
+    max-width: 400px;
+    text-align: center;
+  }
+  .donation-content h2 { font-size: 1.6rem; margin-bottom: var(--space-sm); color: var(--color-primary-2); }
+  .donation-content p { font-size: var(--text-base); margin-bottom: var(--space-md); }
+  .donate-btn {
+    background: linear-gradient(90deg, var(--color-primary-1), var(--color-accent));
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--text-base);
+    font-weight: 700;
+    border-radius: var(--radius);
+    color: #000;
+    transition: transform 0.3s;
+  }
+  .donate-btn:hover { transform: translateY(-2px) scale(1.02); }
+  
+  /* -----------------------------------------
+     Value Proposition
+     -----------------------------------------*/
+  .value-prop-section {
+    max-width: 540px;
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 3px 20px rgba(86,43,255,0.12);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+  .value-prop-section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-primary-1);
+  }
+  .value-list { list-style: none; padding: 0; margin: 0; }
+  .value-list li {
+    position: relative;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+  .value-list li:before {
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    top: 0;
+  }
+  .value-cta { text-align: center; margin-top: var(--space-md); font-size: var(--text-lg); color: var(--color-accent); font-weight: 700; }
+  
+  /* -----------------------------------------
+     Responsive
+     -----------------------------------------*/
+  @media (max-width: 600px) {
+    :root { --space-lg: 24px; --space-xl: 32px; }
+    .hero-title { font-size: 2.2rem; }
+    .auth-card { padding: var(--space-lg) var(--space-sm); }
+    .donation-content { padding: var(--space-md); }
+    .value-prop-section { padding: var(--space-md); }
+  }
+  
