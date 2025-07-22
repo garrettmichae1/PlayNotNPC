@@ -237,6 +237,52 @@ body.landing {
   transform: translateY(-2px) scale(1.03);
 }
 
+/* Value Proposition Section */
+.value-prop-section {
+  margin: 36px auto 0 auto;
+  max-width: 520px;
+  background: rgba(30, 20, 50, 0.92);
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(142,45,226,0.10);
+  padding: 32px 28px 24px 28px;
+  text-align: left;
+}
+.value-prop-section h2 {
+  color: #a445f2;
+  font-size: 1.7rem;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+.value-list li {
+  margin-bottom: 16px;
+  font-size: 1.13rem;
+  color: #f5f5f7;
+  line-height: 1.6;
+  padding-left: 0.5em;
+  position: relative;
+}
+.value-list li:before {
+  content: '★';
+  color: #fa4299;
+  font-size: 1.1em;
+  margin-right: 10px;
+  position: absolute;
+  left: -1.2em;
+  top: 0.1em;
+}
+.value-cta {
+  margin-top: 18px;
+  font-size: 1.15rem;
+  color: #ffb86c;
+  text-align: center;
+  font-weight: 600;
+}
+
   /* Responsive Design */
 @media (max-width: 600px) {
   .hero-title { font-size: 2rem; }
