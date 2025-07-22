@@ -1,160 +1,79 @@
-<!-- login.html -->
+<!-- login.html (now landing page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - PlayNotNPC</title>
+  <title>PlayNotNPC - Level Up Your Real Life</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="stylesheet" href="login.css" />
-<style>
-/* Mobile fallback styles in case CSS doesn't load */
-@media (max-width: 768px) {
-  body {
-    margin: 0;
-    padding: 20px;
-    background: var(--background-main);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login-container {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 30px 20px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 100%;
-    border: 3px solid #8e2de2;
-    text-align: center;
-  }
-  
-  .login-container h1 {
-    font-size: 24px;
-    color: #8e2de2;
-    margin-bottom: 20px;
-  }
-  
-  input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 2px solid #8e2de2;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 16px;
-  }
-  
-  .button-row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .primary-btn, .secondary-btn {
-    padding: 15px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    min-height: 44px;
-  }
-  
-  .primary-btn {
-    background: #8e2de2;
-    color: white;
-  }
-  
-  .secondary-btn {
-    background: transparent;
-    border: 2px solid #8e2de2;
-    color: white;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #fff;
-    font-size: 14px;
-  }
-}
-    .pwa-info-box {
-      display: flex;
-      align-items: flex-start;
-      background: rgba(30, 20, 50, 0.85);
-      border-left: 4px solid #8e2de2;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin: 24px 0 0 0;
-      box-shadow: 0 2px 12px rgba(142,45,226,0.10);
-      font-size: 1em;
-      color: #fff;
-      transition: background 0.2s, color 0.2s;
-    }
-    .pwa-info-icon {
-      font-size: 1.7em;
-      margin-right: 12px;
-      margin-top: 2px;
-      color: #8e2de2;
-    }
-    .pwa-info-content {
-      flex: 1;
-      line-height: 1.5;
-      color: #fff;
-    }
-    @media (max-width: 600px) {
-      .pwa-info-box {
-        font-size: 0.98em;
-        padding: 12px 10px;
-      }
-      .pwa-info-icon {
-        font-size: 1.3em;
-        margin-right: 8px;
-      }
-    }
-</style>
+  <!-- Modular landing page styles -->
+  <link rel="stylesheet" href="landing.css" />
 </head>
-<body class="login-body">
-  <div class="login-container">
-    <h1>🔐 Login to <span class="highlight">PlayNotNPC</span></h1>
-    <p class="subtitle">
-      Level up your real life!<br>
-      Track habits and activities, earn XP, unlock achievements, and visualize your progress with beautiful analytics.<br>
-      Set goals, maintain streaks, and connect with friends—all in a seamless, app-like experience.<br>
-      <span style="display:inline-block; margin-top:8px;">By adding the website to your home screen, you get the entire full app experience.</span>
-    </p>
+<body class="landing">
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="hero-title">Level Up Your Real Life with PlayNotNPC</div>
+    <div class="hero-subtitle">
+      Transform your habits and goals into a real-life RPG.<br>
+      Earn XP, unlock achievements, track your progress, and join a thriving community.<br>
+      <strong>Start your journey today!</strong>
+    </div>
+    <button class="cta-btn" onclick="document.getElementById('auth-card').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+  </section>
 
-    <form id="loginForm">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Enter your email" required />
-      </div>
-      
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter your password" required />
-      </div>
+  <!-- ===== Social Proof Section ===== -->
+  <section class="social-proof">
+    <img src="socialproof/socialProof.jpg" alt="Social proof - PlayNotNPC community" />
+    <div class="social-proof-caption">Join hundreds leveling up their lives with PlayNotNPC!</div>
+  </section>
 
-      <div class="button-row">
-        <button type="button" id="loginBtn" class="primary-btn">Login</button>
-        <button type="button" id="registerBtn" class="secondary-btn">Register</button>
-      </div>
+  <!-- ===== Testimonials Section ===== -->
+  <section class="testimonials">
+    <div class="testimonial">
+      "PlayNotNPC made building habits fun. I check my progress every day!"
+      <div class="testimonial-author">- Alex, Early User</div>
+    </div>
+    <div class="testimonial">
+      "The XP and achievements system keeps me motivated like no other app."
+      <div class="testimonial-author">- Jamie, Community Member</div>
+    </div>
+    <div class="testimonial">
+      "I love seeing my streaks and analytics. The social features are a bonus!"
+      <div class="testimonial-author">- Taylor, Habit Hacker</div>
+    </div>
+  </section>
 
-      <p id="message" class="message"></p>
+  <!-- ===== Auth Card (Tabbed Login/Register) ===== -->
+  <section class="auth-card" id="auth-card">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="login-tab" type="button">Login</button>
+      <button class="auth-tab" id="register-tab" type="button">Register</button>
+    </div>
+    <!-- Login Form -->
+    <form class="auth-form" id="login-form" autocomplete="on" style="display: flex;">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="Enter your email" required />
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password" required />
+      <button class="auth-btn" type="submit">Login</button>
+      <div class="auth-message" id="login-message"></div>
     </form>
-  </div>
+    <!-- Register Form -->
+    <form class="auth-form" id="register-form" autocomplete="on" style="display: none;">
+      <label for="register-email">Email</label>
+      <input type="email" id="register-email" placeholder="Enter your email" required />
+      <label for="register-password">Password</label>
+      <input type="password" id="register-password" placeholder="Create a password" required />
+      <div class="form-hint" id="register-hint"></div>
+      <button class="auth-btn" type="submit">Register</button>
+      <div class="auth-message" id="register-message"></div>
+    </form>
+  </section>
 
-  <script type="module" src="login.js"></script>
+  <!-- Modular landing page JS -->
+  <script type="module" src="landing.js"></script>
 </body>
 </html>
