@@ -196,7 +196,7 @@ h3, .h3 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
 
 .auth-form label {
   display: block;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-sm); /* Increased spacing here */
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text-alt);
@@ -204,7 +204,7 @@ h3, .h3 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
 .auth-form input {
   width: 100%;
   padding: var(--space-md);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg); /* Increased spacing here */
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -266,7 +266,7 @@ h3, .h3 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
 .value-prop-list li {
   position: relative;
   padding-left: var(--space-lg);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-md); /* Added spacing here */
   font-size: var(--text-lg);
 }
 .value-prop-list li::before {
@@ -310,8 +310,8 @@ h3, .h3 { font-size: 1.5rem; margin-bottom: var(--space-sm); }
     font-size: var(--text-md);
   }
   .auth-card {
-     margin: var(--space-lg) auto;
-     padding: var(--space-lg);
+    margin: var(--space-lg) auto;
+    padding: var(--space-lg);
   }
 }
 
